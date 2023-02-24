@@ -9,12 +9,12 @@ const handler = async (req, res) => {
   }
 
   const { user } = session;
-  const { store } = session;
+  //const { store } = session;
   await db.connect();
   const newOrder = new Order({
     ...req.body,
     user: user._id,
-    store: store._id,
+   // store: store._id,
   });
 
   const order = await newOrder.save();

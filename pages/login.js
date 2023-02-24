@@ -18,7 +18,7 @@ function LoginScreen() {
   const { data: session } = useSession;
   useEffect(() => {
     if (session?.user) {
-      router.push(redirect || '/');
+      router.push(redirect || '/shipping');
     }
   }, [router, session, redirect]);
 
