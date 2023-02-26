@@ -2,8 +2,8 @@ import axios from 'axios';
 import Link from 'next/link';
 import React, { useEffect, useReducer } from 'react';
 import { toast } from 'react-toastify';
-import Layout from '../../components/Layout';
-import { getError } from '../../utils/error';
+import Layout from '../../../components/Layout';
+import { getError } from '../../../utils/error';
 
 function reducer(state, action) {
   switch (action.type) {
@@ -83,7 +83,7 @@ function AdminUsersScreen() {
             </li>
             <li>
               <Link href="/admin/users">
-                <a className="font-bold">Users</a>
+                <div className="font-bold">Users</div>
               </Link>
             </li>
           </ul>
@@ -115,10 +115,10 @@ function AdminUsersScreen() {
                       <td className=" p-5 ">{user.email}</td>
                       <td className=" p-5 ">{user.isAdmin ? 'YES' : 'NO'}</td>
                       <td className=" p-5 ">
-                        <Link href={`/admin/user/${user._id}`} passHref>
-                          <a type="button" className="default-button">
+                        <Link href={`/admin/users/${user._id}`} passHref>
+                          <div type="button" className="default-button">
                             Edit
-                          </a>
+                          </div>
                         </Link>
                         &nbsp;
                         <button

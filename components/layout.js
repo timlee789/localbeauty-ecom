@@ -139,7 +139,7 @@ function Layout({ title, children }) {
                     <button onClick={logoutClickHandler}> Logout</button>
                </div>
               ) : (
-                <Link href="/">
+                <Link href="/login">
                   <div className="p-2">Login</div>
                 </Link>
               )}

@@ -47,7 +47,7 @@ export default function AdminOrderScreen() {
             </li>
             <li>
               <Link href="/admin/orders">
-                <a className="font-bold">Orders</a>
+                <div className="font-bold">Orders</div>
               </Link>
             </li>
             <li>
@@ -101,8 +101,8 @@ export default function AdminOrderScreen() {
                           : 'not delivered'}
                       </td>
                       <td className="p-5">
-                        <Link href={`/order/${order._id}`} passHref>
-                          <a>Details</a>
+                        <Link href={`/orders/${order._id}`} passHref>
+                          <div>Details</div>
                         </Link>
                       </td>
                     </tr>

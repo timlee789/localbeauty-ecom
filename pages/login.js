@@ -90,7 +90,7 @@ function LoginScreen() {
           </div>
           <div className="mb-4">
             Dont have an account?
-            <Link href="./register">Register</Link>
+            <Link href="/register">Register</Link>
           </div>
         </form>
       </Layout>

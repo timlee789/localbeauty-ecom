@@ -21,7 +21,7 @@ const userSchema = new mongoose.Schema({
   banner: String,
   zip: { type: String },
   tel: { type: String},
-  isAdmin: { type: Boolean, default: false },
+  isAdmin: { type: Boolean, default: true },
  
 });
 
