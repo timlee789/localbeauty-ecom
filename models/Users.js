@@ -5,22 +5,20 @@ const userSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Product',
   },
-  Store: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Store',
-  },
+
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
+  tel: { type: String, required: true},
   password: { type: String, required: true },
-  isAdmin: { type: Boolean, required: true, default: false },
+ 
   storename: { type: String },
   url: { type: String },
   city: { type: String },
   state: { type: String },
   img1: { type: String },
-  banner: String,
+  banner: {type: String},
   zip: { type: String },
-  tel: { type: String},
+  
   isAdmin: { type: Boolean, default: true },
  
 });

@@ -32,7 +32,7 @@ export default function PaymentScreen() {
     router.push('/placeorder');
   };
   useEffect(() => {
-    if (!shippingAddress.address) {
+    if (!shippingAddress.name) {
       return router.push('/shipping');
     }
     setSelectedPaymentMethod(paymentMethod || '');
