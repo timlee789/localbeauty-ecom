@@ -66,22 +66,23 @@ function Layout({ title, children }) {
                   { session.user.name }
                  </Menu.Button>
                  <Menu.Items className="absolute right-0 w-56 origin-top-right bg-white  shadow-lg ">
-                   {/*  <Menu.Item>
+                    <Menu.Item>
                     <DropdownLink
                        className="dropdown-link"
-                       href="/admin/products/products"
+                       href="/admin/dashboard"
                      >
-                       Product List
-                     </DropdownLink>
-                   </Menu.Item>*/}
-                   <Menu.Item> 
-                     <DropdownLink
-                       className="dropdown-link"
-                       href="/about"
-                     >
-                       Product Userside
+                       Dashboard
                      </DropdownLink>
                    </Menu.Item>
+                    <Menu.Item>
+                    <DropdownLink
+                       className="dropdown-link"
+                       href="/admin/orders"
+                     >
+                       Orders
+                     </DropdownLink>
+                   </Menu.Item>
+                  
                    <Menu.Item> 
                      <DropdownLink
                        className="dropdown-link"
@@ -96,6 +97,14 @@ function Layout({ title, children }) {
                        href="/admin/products/productedit"
                      >
                        Product Edit
+                     </DropdownLink>
+                   </Menu.Item>
+                   <Menu.Item>
+                     <DropdownLink
+                       className="dropdown-link"
+                       href="/admin/users"
+                     >
+                       Users
                      </DropdownLink>
                    </Menu.Item>
                    <Menu.Item>
@@ -119,7 +128,7 @@ function Layout({ title, children }) {
                        className="dropdown-link"
                        href="/contest/gallery"
                      >
-                       Contest Gallery
+                       Event Gallery
                      </DropdownLink>
                    </Menu.Item>
                    <Menu.Item>

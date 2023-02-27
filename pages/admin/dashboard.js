@@ -90,10 +90,19 @@ function AdminDashboardScreen() {
               <Link href="/admin/orders">Orders</Link>
             </li>
             <li>
-              <Link href="/admin/products">Products</Link>
+              <Link href="/admin/products/productadd">Product Add</Link>
+            </li>
+            <li>
+              <Link href="/admin/products/productedit">Product Edit</Link>
             </li>
             <li>
               <Link href="/admin/users">Users</Link>
+            </li>
+            <li>
+              <Link href="/admin/campaign/campaignhistory">Campaign History</Link>
+            </li>
+            <li>
+              <Link href="/contest/gallery">Event Gallery</Link>
             </li>
           </ul>
         </div>

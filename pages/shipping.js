@@ -5,7 +5,10 @@ import Layout from '../components/layout';
 import { useForm } from 'react-hook-form';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/router';
-
+import { toast } from 'react-toastify';
+import { getError } from '../utils/error';
+import axios from 'axios';
+import { signIn, useSession } from 'next-auth/react';
 
 export default function ShippingScreen() {
     const {
@@ -13,68 +16,116 @@ export default function ShippingScreen() {
         register,
         formState:{errors},
         setValue,
-        getValue,
+        getValues,
     } = useForm();
     const  { state, dispatch } = useContext(Store)
     const { cart } = state;
     const { shippingAddress} = cart;
     const router = useRouter();
     useEffect(() => {
-        setValue('fullName', shippingAddress.fullName);
-        setValue('address', shippingAddress.address);
-        setValue('city', shippingAddress.city);
-        setValue('postalCode', shippingAddress.postalCode);
-        setValue('country', shippingAddress.country);
+        setValue('name', shippingAddress.name);
+        setValue('email', shippingAddress.address);
+        setValue('tel', shippingAddress.city);
+        // setValue('postalCode', shippingAddress.postalCode);
+        // setValue('country', shippingAddress.country);
     },[setValue, shippingAddress])
 
-    const submitHandler = ({fullName, address, city, postalCode, country}) => {
+    const submitHandler = async ({name, email, tel, password}) => {
+        try {
+            await axios.post('./api/auth/signup', {
+              name,
+              email,
+              tel,
+              password,
+            });
+      
+            const result = await signIn('credentials', {
+              redirect: false,
+              email,
+              password
+            });
+            if (result.error) {
+              toast.error(result.error);
+            }
+          } catch (err) {
+            toast.error(getError(err));
+          }
         dispatch({
             type: 'SAVE_SHIPPING_ADDRESS',
-            payload: { fullName, address, city, postalCode, country}
+            payload: { name, email, tel}
         });
         Cookies.set(
             'cart',
             JSON.stringify({
-                ...cart, shippingAddress: {fullName, address, city, postalCode, country}
+                ...cart, shippingAddress: {name, email, tel}
             })
         );
         router.push('/payment');
     }
   return (
-    <Layout title="Shipping Address">
+    <Layout title="Signin As Guest">
         <CheckoutWizard activeStep={1}/>
         <form className='max=auto max-w-screen-md' onSubmit={handleSubmit(submitHandler)}>
-            <h1 className='mb-4 text-xl'>Shipping Address</h1>
+            <h1 className='mb-4 text-xl'>Signin As Guest</h1>
                 <div className='mb-4'>
-                        <label htmlFor='fullName'>Full Name</label>
-                        <input className='w-full' id='fullName' autoFocus {...register('fullName', {required: 'Please enter full name'})} />
-                        {errors.fullName && (<div className='text-red-500'>{errors.fullName.message}</div>)}
+                        <label htmlFor='name'>Name</label>
+                        <input className='w-full' id='name' autoFocus {...register('name', {required: 'Please enter full name'})} />
+                        {errors.name && (<div className='text-red-500'>{errors.name.message}</div>)}
                 </div>
                 <div className='mb-4'>
-                        <label htmlFor="address">Address</label>
-                        <input className='w-full' id='address' 
-                        {...register('address', {required: 'Please enter address', 
-                        minLength: {value: 3, message: 'Address is more than 2 chars'}})} />
-                        {errors.address && ( <div className='text-red-500'>{errors.address.message}</div>)}
+                        <label htmlFor="email">Email</label>
+                        <input className='w-full' id='email' 
+                        {...register('email', {required: 'Please enter email', 
+                        minLength: {value: 3, message: 'email is more than 2 chars'}})} />
+                        {errors.email && ( <div className='text-red-500'>{errors.email.message}</div>)}
                 </div>
                 <div className='mb-4'>
-                        <label htmlFor="city">City</label>
-                        <input className='w-full' id='city' 
-                        {...register('city', {required: 'Please enter city'} )} />
-                        {errors.city && ( <div className='text-red-500'>{errors.city.message}</div>)}
+                        <label htmlFor="tel">Tel</label>
+                        <input className='w-full' id='tel' 
+                        {...register('tel', {required: 'Please enter tel'} )} />
+                        {errors.tel && ( <div className='text-red-500'>{errors.tel.message}</div>)}
                 </div>
-                <div className='mb-4'>
-                        <label htmlFor="postalCode">Postal Code</label>
-                        <input className='w-full' id='postalCode' 
-                        {...register('postalCode', {required: 'Please enter postalCode'})} />
-                        {errors.postalCode && ( <div className='text-red-500'>{errors.postalCode.message}</div>)}
-                </div>
-                <div className='mb-4'>
-                        <label htmlFor="country">Country</label>
-                        <input className='w-full' id='country' 
-                        {...register('country', {required: 'Please enter country'})} />
-                        {errors.country && ( <div className='text-red-500'>{errors.country.message}</div>)}
-                </div>
+                  <div className="mb-4">
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            {...register('password', {
+              required: 'Please enter password',
+              minLength: { value: 6, message: 'password is more than 5 chars' },
+            })}
+            className="w-full"
+            id="password"
+            autoFocus
+          ></input>
+          {errors.password && (
+            <div className="text-red-500 ">{errors.password.message}</div>
+          )}
+        </div>
+        <div className="mb-4">
+          <label htmlFor="confirmPassword">Confirm Password</label>
+          <input
+            className="w-full"
+            type="password"
+            id="confirmPassword"
+            {...register('confirmPassword', {
+              required: 'Please enter confirm password',
+              validate: (value) => value === getValues('password'),
+              minLength: {
+                value: 6,
+                message: 'confirm password is more than 5 chars',
+              },
+            })}
+          />
+          {errors.confirmPassword && (
+            <div className="text-red-500 ">
+              {errors.confirmPassword.message}
+            </div>
+          )}
+          {errors.confirmPassword &&
+            errors.confirmPassword.type === 'validate' && (
+              <div className="text-red-500 ">Password do not match</div>
+            )}
+        </div>
                 <div className='mb-4 flex justify-between'>
                         <button className='primary-button'>Next</button>
                 </div>

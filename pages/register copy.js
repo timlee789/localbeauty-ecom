@@ -70,7 +70,21 @@ export default function LoginScreen() {
             <div className="text-red-500">{errors.name.message}</div>
           )}
         </div>
-        
+        <div className="mb-4">
+          <label htmlFor="storename">Store Name</label>
+          <input
+            type="text"
+            className="w-full"
+            id="storename"
+            autoFocus
+            {...register('storename', {
+              required: 'Please enter storename',
+            })}
+          />
+          {errors.storename && (
+            <div className="text-red-500">{errors.storename.message}</div>
+          )}
+        </div>
 
         <div className="mb-4">
           <label htmlFor="email">Email</label>
@@ -88,21 +102,6 @@ export default function LoginScreen() {
           ></input>
           {errors.email && (
             <div className="text-red-500">{errors.email.message}</div>
-          )}
-        </div>
-        <div className="mb-4">
-          <label htmlFor="storename">Store Name</label>
-          <input
-            type="text"
-            className="w-full"
-            id="storename"
-            autoFocus
-            {...register('storename', {
-              required: 'Please enter storename',
-            })}
-          />
-          {errors.storename && (
-            <div className="text-red-500">{errors.storename.message}</div>
           )}
         </div>
         <div className="mb-4">
