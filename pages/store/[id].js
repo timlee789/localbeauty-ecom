@@ -1,16 +1,27 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import db from '../../utils/db';
 import CustomItemScreen from '../../components/customitem';
 import Layout from '../../components/layout';
 import Product from '../../models/Product';
 import Store from '../../models/Stores';
 import HeadBanner from '../../components/headbanner';
+import Cookies from 'js-cookie';
 import Registration from '../contest/registration';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import Link from 'next/link';
 
+
 function StoreScreen({ store, product }) {
+  const { state, dispatch } = useContext(Store);
+  const { cart } = state;
+  Cookies.set(
+    'cart',
+    JSON.stringify(
+     'cart',
+      {seller: store},
+    )
+  );
   return (
     <Layout>
       {/* <Carousel showArrows={true} showThumbs={false} swipeable={true} autoPlay>

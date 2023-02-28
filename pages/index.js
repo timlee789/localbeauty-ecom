@@ -1,7 +1,7 @@
 import db from '../utils/db';
 import StoreInfo from '../components/storeinfo';
 import Layout from '../components/layout';
-import Stores from '../models/Stores';
+import Users from '../models/Users';
 import Image from 'next/image';
 import LoginScreen from '@/components/login';
 import { useSession } from 'next-auth/react';
@@ -31,7 +31,7 @@ export default function Home({ storeinfo }) {
             img1={sto.img1}
             url={sto.url}
             state={sto.state}
-            storename={sto.name}
+            name={sto.name}
             city={sto.city}
           />
         ))}
@@ -41,12 +41,12 @@ export default function Home({ storeinfo }) {
 }
 export async function getServerSideProps() {
   await db.connect();
-  const stores = await Stores.find().sort({ state: 1 }).lean();
+  const users = await Users.find().sort({ state: 1 }).lean();
   return {
     props: {
-      storeinfo: stores.map((sto) => ({
+      storeinfo: users.map((sto) => ({
         _id: sto._id.toString(),
-        name: sto.storename || null,
+        name: sto.name || null,
         city: sto.city || null,
         state: sto.state || null,
         url: sto.url || null,

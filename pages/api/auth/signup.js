@@ -8,12 +8,12 @@ async function handler(req, res) {
     return;
   }
   const { name, email, tel, password } = req.body;
-  // if (!name || !email || !password || password.trim().length < 5) {
-  //   res.status(422).json({
-  //     message: 'Validation error',
-  //   });
-  //   return;
-  // }
+  if (!name || !email || !password || password.trim().length < 5) {
+    res.status(422).json({
+      message: 'Validation error',
+    });
+    return;
+  }
   await db.connect();
 
   const existingUser = await User.findOne({ email: email });
