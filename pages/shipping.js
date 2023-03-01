@@ -30,26 +30,26 @@ export default function ShippingScreen() {
         // setValue('country', shippingAddress.country);
     },[setValue, shippingAddress])
 
-    const submitHandler = async ({name, email, tel, password}) => {
-        try {
-            await axios.post('./api/auth/signup', {
-              name,
-              email,
-              tel,
-              password,
-            });
+    const submitHandler = ({name, email, tel}) => {
+        // try {
+        //     await axios.post('./api/auth/signup', {
+        //       name,
+        //       email,
+        //       tel,
+        //       password,
+        //     });
       
-            const result = await signIn('credentials', {
-              redirect: false,
-              email,
-              password
-            });
-            if (result.error) {
-              toast.error(result.error);
-            }
-          } catch (err) {
-            toast.error(getError(err));
-          }
+        //     const result = await signIn('credentials', {
+        //       redirect: false,
+        //       email,
+        //       password
+        //     });
+        //     if (result.error) {
+        //       toast.error(result.error);
+        //     }
+        //   } catch (err) {
+        //     toast.error(getError(err));
+        //   }
         dispatch({
             type: 'SAVE_SHIPPING_ADDRESS',
             payload: { name, email, tel}
@@ -85,8 +85,8 @@ export default function ShippingScreen() {
                         {...register('tel', {required: 'Please enter tel'} )} />
                         {errors.tel && ( <div className='text-red-500'>{errors.tel.message}</div>)}
                 </div>
-                  <div className="mb-4">
-          <label htmlFor="password">Password</label>
+                {/*    <div className="mb-4">
+         <label htmlFor="password">Password</label>
           <input
             type="password"
             {...register('password', {
@@ -125,7 +125,7 @@ export default function ShippingScreen() {
             errors.confirmPassword.type === 'validate' && (
               <div className="text-red-500 ">Password do not match</div>
             )}
-        </div>
+        </div> */}
                 <div className='mb-4 flex justify-between'>
                         <button className='primary-button'>Next</button>
                 </div>

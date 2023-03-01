@@ -2,6 +2,7 @@ import '../styles/globals.css';
 import { SessionProvider, useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { StoreProvider } from '../utils/Store';
+import { Context } from '@/context';
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
@@ -9,7 +10,9 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
       <StoreProvider>
         {Component.auth ? (
           <Auth adminOnly={Component.auth.adminOnly}>
+           
             <Component {...pageProps} />
+           
           </Auth>
         ) : (
           <Component {...pageProps} />

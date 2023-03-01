@@ -7,10 +7,12 @@ const handler = async (req, res) => {
   if (!session || (session && !session.user.isAdmin)) {
     return res.status(401).send('signin required');
   }
+  const { user } = session;
   if (req.method === 'GET') {
     await db.connect();
-    const orders = await Order.find({});
-    //const orders = await Order.find({}).populate('user', 'name');
+    const userid = user._id
+    const orders = await Order.find({seller: userid });
+    //const orders = await Order.find({}).populate('user', user);
     await db.disconnect();
     res.send(orders);
   } else {

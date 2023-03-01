@@ -7,10 +7,13 @@ import LoginScreen from '@/components/login';
 import { useSession } from 'next-auth/react';
 import Productpage from '@/components/productpage';
 
+
 export default function Home({ storeinfo }) {
   const {status, data: session} = useSession();
+ 
   return (
     <Layout title="Home Page">
+
       {session?.user?.email? (
         <div>{session.user._id}
         <div>

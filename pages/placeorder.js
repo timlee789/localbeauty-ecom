@@ -8,13 +8,15 @@ import { toast } from 'react-toastify';
 import CheckoutWizard from '../components/CheckoutWizard';
 import Layout from '../components/layout';
 import { getError } from '../utils/error';
-import { Store } from '../utils/Store';
+import { Store } from '../utils/Store'
+import Cookie from 'js-cookie';
 
 export default function PlaceOrderScreen() {
   const { state, dispatch } = useContext(Store);
   const { cart } = state;
-  const { cartItems, shippingAddress, paymentMethod } = cart;
-
+  const { cartItems, shippingAddress, paymentMethod, userStore } = cart;
+  const seller = Cookie.get('Seller');
+ //const store = useContext(Context);
   const round2 = (num) => Math.round(num * 100 + Number.EPSILON) / 100;
 
   const itemsPrice = round2(
@@ -45,6 +47,7 @@ export default function PlaceOrderScreen() {
         shippingPrice,
         taxPrice,
         totalPrice,
+        seller,
       });
       setLoading(false);
       dispatch({ type: 'CART_CLEAR_ITEMS' });
@@ -91,6 +94,11 @@ export default function PlaceOrderScreen() {
               <div>
                 <Link href="/payment">Edit</Link>
               </div>
+            </div>
+            <div className="card  p-5">
+              <h2 className="mb-2 text-lg">Seller</h2>
+              <div>{seller}</div>
+              
             </div>
             <div className="card overflow-x-auto p-5">
               <h2 className="mb-2 text-lg">Order Items</h2>
