@@ -27,12 +27,17 @@ export default function LoginScreen() {
     formState: { errors },
   } = useForm();
 
-  const submitHandler = async ({ name, storename, email, password }) => {
+  const submitHandler = async ({ name, email, password, tel, city, address, storename, zip, state }) => {
     try {
       await axios.post('./api/auth/signup', {
         name,
         storename,
         email,
+        tel,
+        address,
+         city,
+         state,
+         zip,
         password,
       });
 
@@ -71,6 +76,21 @@ export default function LoginScreen() {
           )}
         </div>
         
+        <div className="mb-4">
+          <label htmlFor="storename">Store Name</label>
+          <input
+            type="text"
+            className="w-full"
+            id="storename"
+            autoFocus
+            {...register('storename', {
+              required: 'Please enter storename',
+            })}
+          />
+          {errors.storename && (
+            <div className="text-red-500">{errors.storename.message}</div>
+          )}
+        </div>
 
         <div className="mb-4">
           <label htmlFor="email">Email</label>
@@ -90,21 +110,88 @@ export default function LoginScreen() {
             <div className="text-red-500">{errors.email.message}</div>
           )}
         </div>
+
         <div className="mb-4">
-          <label htmlFor="storename">Store Name</label>
+          <label htmlFor="tel">Tel</label>
           <input
-            type="text"
-            className="w-full"
-            id="storename"
-            autoFocus
-            {...register('storename', {
-              required: 'Please enter storename',
+            type="tel"
+            {...register('tel', {
+              required: 'Please enter tel',
+              
             })}
-          />
-          {errors.storename && (
-            <div className="text-red-500">{errors.storename.message}</div>
+            className="w-full"
+            id="tel"
+          ></input>
+          {errors.tel && (
+            <div className="text-red-500">{errors.tel.message}</div>
           )}
         </div>
+
+        <div className="mb-4">
+          <label htmlFor="address">Address</label>
+          <input
+            type="address"
+            {...register('address', {
+              required: 'Please enter address',
+             
+            })}
+            className="w-full"
+            id="address"
+          ></input>
+          {errors.address && (
+            <div className="text-red-500">{errors.address.message}</div>
+          )}
+        </div>
+
+        <div className="mb-4">
+          <label htmlFor="city">city</label>
+          <input
+            type="city"
+            {...register('city', {
+              required: 'Please enter city',
+             
+            })}
+            className="w-full"
+            id="city"
+          ></input>
+          {errors.city && (
+            <div className="text-red-500">{errors.city.message}</div>
+          )}
+        </div>
+
+        <div className="mb-4">
+          <label htmlFor="state">state</label>
+          <input
+            type="state"
+            {...register('state', {
+              required: 'Please enter state',
+             
+            })}
+            className="w-full"
+            id="state"
+          ></input>
+          {errors.state && (
+            <div className="text-red-500">{errors.state.message}</div>
+          )}
+        </div>
+
+        <div className="mb-4">
+          <label htmlFor="zip">Zip</label>
+          <input
+            type="zip"
+            {...register('zip', {
+              required: 'Please enter zip',
+             
+            })}
+            className="w-full"
+            id="zip"
+          ></input>
+          {errors.zip && (
+            <div className="text-red-500">{errors.zip.message}</div>
+          )}
+        </div>
+
+
         <div className="mb-4">
           <label htmlFor="password">Password</label>
           <input

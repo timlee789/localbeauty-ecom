@@ -26,7 +26,7 @@ function StoreScreen({ user, product }) {
   Cookies.set( 'Seller', user[0]._id)   
   //Cookies.set( 'Seller', JSON.stringify(user[0]._id) )   
       
- console.log(user[0]._id)
+ console.log(user)
   return (
     <Layout>
       {/* <Carousel showArrows={true} showThumbs={false} swipeable={true} autoPlay>

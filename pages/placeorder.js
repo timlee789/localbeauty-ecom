@@ -16,7 +16,6 @@ export default function PlaceOrderScreen() {
   const { cart } = state;
   const { cartItems, shippingAddress, paymentMethod, userStore } = cart;
   const seller = Cookie.get('Seller');
- //const store = useContext(Context);
   const round2 = (num) => Math.round(num * 100 + Number.EPSILON) / 100;
 
   const itemsPrice = round2(

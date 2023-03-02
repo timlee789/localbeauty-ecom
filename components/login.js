@@ -29,7 +29,7 @@ function LoginScreen() {
         email,
         password,
       });
-      router.push('/admin/products/productedit');
+      router.push('/admin/dashboard');
       //router.push('/admin/productinput');
       if (result.error) {
         toast.error(result.error);

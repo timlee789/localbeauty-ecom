@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
   //   ref: 'Product',
   // },
 
-  _id: {type:String, required: true},
+  //_id: {type:String, required: true},
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   tel: { type: String, required: true},
@@ -14,6 +14,7 @@ const userSchema = new mongoose.Schema({
  
   storename: { type: String },
   url: { type: String },
+  address: {type: String, required: true},
   city: { type: String },
   state: { type: String },
   img1: { type: String },

@@ -14,7 +14,7 @@ function StoreInfo(props) {
             <h2 className="text-lg font-bold p-5">{props.name}</h2>
           </div>
           <Image
-            src={props.img1}
+            //src={props.img1}
             alt={props.name}
             className="rounded shadow-md"
             width={350}
