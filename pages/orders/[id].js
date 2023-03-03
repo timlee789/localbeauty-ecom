@@ -36,7 +36,7 @@ function OrderScreen() {
     const [{isPending}, paypalDispatch] = usePayPalScriptReducer();
     const {query} = useRouter();
     const orderId = query.id;
-    const [{ loading,  order, successPay, loadingPay, }, dispatch ] = useReducer(reducer, {loading: true, order: {}, error: '',});
+    const [{ loading,  order, error, successPay, loadingPay, }, dispatch ] = useReducer(reducer, {loading: true, order: {}, error: '',});
     useEffect(() => {
         const fetchOrder = async () => {
                 try {
@@ -44,7 +44,7 @@ function OrderScreen() {
                     const { data } = await axios.get(`/api/orders/${orderId}`);
                     dispatch({type: 'FETCH_SUCCESS', payload: data });
                 } catch (err) {
-                    dispatch({type: 'FETCH_FAIL', payload: getError(err)});
+                    dispatch({type: 'FETCH_FAIL', payload: err});
                 }
             };
             if (!order._id || successPay || (order._id && order._id !== orderId)) {
@@ -116,7 +116,7 @@ function OrderScreen() {
         toast.error(getError(err));
     }
     return (
-          <Layout title={'Order ${orderId}'}>
+          <Layout title={`Order ${orderId}`}>
             <h1 className="mb-4 text-xl">{`Order ${orderId}`}</h1>
             {loading ? (<div>Loading...</div>):
             //    error ? (<div className="alert-error">{error}</div>):
@@ -126,9 +126,9 @@ function OrderScreen() {
                      <div className="card p-5">
                         <h2 className="mb-2 text-lg">Shipping Address</h2>
                             <div>
-                                {shippingAddress.fullName}, {shippingAddress.address}, {''}
-                                {shippingAddress.city}, {shippingAddress.postalCode}, {''}
-                                {shippingAddress.country}
+                                {shippingAddress.name}, {shippingAddress.email}, {''}
+                                {shippingAddress.city}, {shippingAddress.zip}, {''}
+                                {shippingAddress.tel}
                             </div>
                             {isDelivered ? (
                                 <div className="alert-success">Delivered at {deliveredAt}</div>
@@ -162,7 +162,7 @@ function OrderScreen() {
                                         <tr key={item._id} className="border-b">
                                             <td>
                                                 <Link href={`/product/${item.slug}`}>
-                                                    <a className="flex items-center">
+                                                    <div className="flex items-center">
                                                         <Image
                                                             src={item.image}
                                                             alt={item.name}
@@ -170,7 +170,7 @@ function OrderScreen() {
                                                             height={50}
                                                         /> &nbsp;
                                                         {item.name}
-                                                    </a>
+                                                    </div>
                                                 </Link>
                                             </td>
                                             <td className="p-5 text-left">{item.size}</td>

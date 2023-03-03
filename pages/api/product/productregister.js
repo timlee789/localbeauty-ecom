@@ -11,12 +11,13 @@ const postHandler = async (req, res) => {
   if (req.method !== 'POST') {
     return;
   }
-  const { productname, price, description1, description2, imageField } = req.body;
+  const { productname, price, stock, description1, description2, imageField } = req.body;
 
   await db.connect();
   const newProduct = new Product({
     productname,
     price,
+    countInStock: stock,
     description1,
     description2,
     image: imageField,

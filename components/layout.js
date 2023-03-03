@@ -99,14 +99,14 @@ function Layout({ title, children }) {
                        Product Edit
                      </DropdownLink>
                    </Menu.Item>
-                   <Menu.Item>
+                   {/* <Menu.Item>
                      <DropdownLink
                        className="dropdown-link"
                        href="/admin/users"
                      >
                        Users
                      </DropdownLink>
-                   </Menu.Item>
+                   </Menu.Item> */}
                    <Menu.Item>
                      <DropdownLink
                        className="dropdown-link"

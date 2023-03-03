@@ -36,6 +36,8 @@ export default function Home({ storeinfo }) {
             state={sto.state}
             name={sto.name}
             city={sto.city}
+            address={sto.address}
+            tel={sto.tel}
           />
         ))}
       </div>
@@ -52,8 +54,8 @@ export async function getServerSideProps() {
         name: sto.name || null,
         city: sto.city || null,
         state: sto.state || null,
-        url: sto.url || null,
-        img1: sto.img1 || null,
+        address: sto.address || null,
+        tel: sto.tel || null,
       })),
     },
   };

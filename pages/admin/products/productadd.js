@@ -51,6 +51,7 @@ export default function AdminProductScreen() {
   const submitHandler = async ({
     productname,
     price,
+    stock,
     description1,
     description2,
     imageField,
@@ -60,6 +61,7 @@ export default function AdminProductScreen() {
       await axios.post('/api/product/productregister', {
         productname,
         price,
+        stock,
         description1,
         description2,
         imageField,
@@ -130,6 +132,18 @@ export default function AdminProductScreen() {
           ></input>
           {errors.price && (
             <div className="text-red-500">{errors.price.message}</div>
+          )}
+        </div>
+        <div className="mb-4">
+          <label htmlFor="stock">stock</label>
+          <input
+            type="stock"
+            {...register('stock', { required: 'Please enter stock' })}
+            className="w-full"
+            id="stock"
+          ></input>
+          {errors.stock && (
+            <div className="text-red-500">{errors.stock.message}</div>
           )}
         </div>
         <div className="mb-4">

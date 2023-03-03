@@ -6,18 +6,21 @@ import db from '../../../utils/db';
 
 const handler = async (req, res) => {
   const session = await getSession({ req });
-  console.log(session);
+  //console.log(session);
   if (!session || (session && !session.user.isAdmin)) {
     return res.status(401).send('signin required');
   }
-
+  const { user } = session;
   await db.connect();
-
-  const ordersCount = await Order.countDocuments();
+  const userid = user._id;
+  //const ordersCount = await Order.countDocuments();
   const productsCount = await Product.countDocuments();
   const usersCount = await User.countDocuments();
 
   const ordersPriceGroup = await Order.aggregate([
+    {
+      $match: { _id: userid}
+    },
     {
       $group: {
         _id: null,
@@ -28,7 +31,22 @@ const handler = async (req, res) => {
   const ordersPrice =
     ordersPriceGroup.length > 0 ? ordersPriceGroup[0].sales : 0;
 
+  const ordersCountGroup = await Order.aggregate([
+    {
+      $match: {_id: userid}
+    },
+    {
+      $count:""
+    }
+    
+  ])
+  const ordersCount = 
+  ordersCountGroup.length > 0 ? ordersCountGroup[0].countDocuments : 5;
+
   const salesData = await Order.aggregate([
+    {
+      $match: { _id: userid}
+    },
     {
       $group: {
         _id: { $dateToString: { format: '%Y-%m', date: '$createdAt' } },
