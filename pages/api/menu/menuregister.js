@@ -1,6 +1,6 @@
 import db from '../../../utils/db';
 import { getSession } from 'next-auth/react';
-import Product from '../../../models/Product';
+import Category from '../../../models/Category';
 
 const postHandler = async (req, res) => {
   const session = await getSession({ req });
@@ -11,23 +11,18 @@ const postHandler = async (req, res) => {
   if (req.method !== 'POST') {
     return;
   }
-  const { productname, price, stock, description1, description2, imageField, category } = req.body;
+  const { category, description } = req.body;
 
   await db.connect();
-  const newProduct = new Product({
-    productname,
-    price,
-    countInStock: stock,
-    description1,
-    description2,
+  const newCategory = new Category({
     category,
-    image: imageField,
+    description,
     user: user._id,
   });
- const product = await newProduct.save();
+ const categories = await newCategory.save();
 
   await db.disconnect();
-  res.status(200).send({ message: 'Product created successfully', product });
+  res.status(200).send({ message: 'Category created successfully', categories });
 };
 
 export default postHandler;

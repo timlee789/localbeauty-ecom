@@ -13,7 +13,7 @@ function reducer(state, action) {
     case 'FETCH_REQUEST':
       return { ...state, loading: true, error: '' };
     case 'FETCH_SUCCESS':
-      return { ...state, loading: false, products: action.payload, error: '' };
+      return { ...state, loading: false, category: action.payload, error: '' };
     case 'FETCH_FAIL':
       return { ...state, loading: false, error: action.payload };
     default:
@@ -22,9 +22,9 @@ function reducer(state, action) {
 }
 
 export default function AdminProductScreen() {
-  const [{ loading, error, products }, dispatch] = useReducer(reducer, {
+  const [{ loading, error, category }, dispatch] = useReducer(reducer, {
     loading: true,
-    products: [],
+    category: [],
     error: '',
   });
 
@@ -35,18 +35,18 @@ export default function AdminProductScreen() {
     setValue,
   } = useForm();
   const router = useRouter();
-  // useEffect(() => {
-  //   const fetchOrders = async () => {
-  //     try {
-  //       dispatch({ type: 'FETCH_REQUEST' });
-  //       const { data } = await axios.get('/api/product/productlist');
-  //       dispatch({ type: 'FETCH_SUCCESS', payload: data });
-  //     } catch (err) {
-  //       dispatch({ type: 'FETCH_FAIL', payload: getError(err) });
-  //     }
-  //   };
-  //   fetchOrders();
-  // }, []);
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        dispatch({ type: 'FETCH_REQUEST' });
+        const { data } = await axios.get('/api/menu/menulist');
+        dispatch({ type: 'FETCH_SUCCESS', payload: data });
+      } catch (err) {
+        dispatch({ type: 'FETCH_FAIL', payload: getError(err) });
+      }
+    };
+    fetchOrders();
+  }, []);
 
   const submitHandler = async ({
     productname,
@@ -55,6 +55,7 @@ export default function AdminProductScreen() {
     description1,
     description2,
     imageField,
+    category,
   }) => {
     try {
       console.log(description1, productname);
@@ -65,6 +66,7 @@ export default function AdminProductScreen() {
         description1,
         description2,
         imageField,
+        category,
       });
       router.push('/admin/products/productedit');
       // if (result.error) {
@@ -107,6 +109,12 @@ export default function AdminProductScreen() {
         className="mx-auto max-w-screen-md"
         onSubmit={handleSubmit(submitHandler)}
       >
+         <select {...register("category")}>
+          {category.map((cat) => (
+             <option value={cat.category}>{cat.category}</option>
+          ))}
+      </select>
+
         <div className="mb-4">
           <label htmlFor="productname">productname</label>
           <input

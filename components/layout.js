@@ -7,22 +7,28 @@ import DropdownLink from './dropdownlink';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSession, signOut } from 'next-auth/react';
-//import { Cookies } from 'next/dist/server/web/spec-extension/cookies';
+
+import  Cookie  from 'js-cookie';
+
 
 function Layout({ title, children }) {
   const { status, data: session } = useSession();
   const { state, dispatch } = useContext(Store);
   const { cart } = state;
   const [cartItemsCount, setCartItemsCount] = useState(0);
+  const seller = Cookie.get('Seller');
+  const [hydrated, setHydrated] = React.useState(false);
 
   useEffect(() => {
+    setHydrated(true);
     setCartItemsCount(cart.cartItems.reduce((a, c) => a + c.quantity, 0));
   }, [cart.cartItems]);
-
+  if (!hydrated) {
+    return null;
+  }
   const logoutClickHandler = () => {
     signOut({ callbackUrl: '/' });
   };
-
   return (
     <div>
       <Head>
@@ -48,6 +54,7 @@ function Layout({ title, children }) {
             <Link href="/">
               <div className="text-lg font-bold">Local Beauty</div>
             </Link>
+            <div>{seller}</div>
            <div className='flex justify-between'>
               <Link href="/cart" className="px-4 flex">
                 Cart
@@ -57,8 +64,7 @@ function Layout({ title, children }) {
                   </span>
                 )}
               </Link>
-                
-
+              
            
               {session?.user?.isAdmin? (
                  <Menu as="div" className="relative inline-block z-10">

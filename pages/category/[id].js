@@ -7,7 +7,7 @@ import Product from '../../models/Product';
 import User from '../../models/Users';
 import HeadBanner from '../../components/headbanner';
 import Cookies from 'js-cookie';
-import Store from '../../utils/Store';
+
 
 // import Registration from '../contest/registration';
 import { Carousel } from 'react-responsive-carousel';
@@ -16,18 +16,9 @@ import Link from 'next/link';
 
 
 
-function StoreScreen({ user, product }) {
-//    const { state, dispatch } = useContext(Store);
-//    const { cart } = state;
-//    const { userStore} = cart;
-//    dispatch({
-//     type: 'SAVE_USER_STORE',
-//     payload: user[0]._id
-// });
-  Cookies.set( 'Seller', user[0]._id)   
-  //Cookies.set( 'Seller', JSON.stringify(user[0]._id) )   
-      
- console.log(user)
+function CategoryScreen({ user, product }) {
+const seller = Cookies.get('Seller');
+
   return (
     <Layout>
     <SubLayout/>
@@ -39,11 +30,7 @@ function StoreScreen({ user, product }) {
 
         <div className="lg:justify-center mt-4">
           <div>
-            {/* <div>
-              {store.map((hed) => (
-                <Registration key={hed._id} id={hed._id} />
-              ))}
-            </div> */}
+         
             <div>
               <div className=" grid grid-cols-1 p-5 gap-5 md:grid-cols-4 ">
                 {product.map((sto) => (
@@ -69,11 +56,12 @@ function StoreScreen({ user, product }) {
 }
 
 export async function getServerSideProps(context) {
+  const seller = Cookies.get('Seller');
   const { params } = context;
-  const { id } = params;
+  const { category } = params;
   await db.connect();
-  const user = await User.find({ _id: id });
-  const product = await Product.find({ user: id });
+  const user = await User.find({ _id: seller });
+  const product = await Product.find({ category: 'Destiny Wig' , user: seller});
   //const featuredProducts = await Product.find({ isFeatured: true }).lean();
   await db.disconnect();
   return {
@@ -85,5 +73,5 @@ export async function getServerSideProps(context) {
     },
   };
 }
-export default StoreScreen;
+export default CategoryScreen;
 
