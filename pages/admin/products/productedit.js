@@ -77,7 +77,7 @@ export default function ProductEdit() {
           <div className="flex justify-center flex-wrap">
            
             {products.map((order) => (
-              <div key={order._id}>
+              <div key={order._id} >
                 <div className="border-b">
                 <div className=" p-2 ">
                     <Image
@@ -89,9 +89,9 @@ export default function ProductEdit() {
                   </div>
                   <div className="text-center text-blue-500 ">{order.productname}</div>
                   <div  className='flex justify-center'>
-                  <div className=" font-bold text-center "> ${order.price}</div>
+                  <div className="font-bold text-lg text-red-800 line-through"> ${order.listprice}</div>
                   <div className='ml-17'>  &nbsp; &nbsp; &nbsp;   sale Price&nbsp;&nbsp; </div>
-                  <div className=" font-bold text-center ">${order.price}</div>
+                  <div className=" font-bold text-center ">${order.saleprice}</div>
                   </div>
                   <div className="text-center text-blue-500 ">{order.description1}</div>
                   <div className="text-center text-blue-500 ">{order.description2}</div>

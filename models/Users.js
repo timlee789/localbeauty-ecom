@@ -11,15 +11,12 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   tel: { type: String, required: true},
   password: { type: String, required: true },
- 
-  storename: { type: String },
   url: { type: String },
   address: {type: String, required: true},
   city: { type: String },
   state: { type: String },
-  img1: { type: String },
-  banner: {type: String},
   zip: { type: String },
+  banner: { type: String },
   
   isAdmin: { type: Boolean, default: true },
  

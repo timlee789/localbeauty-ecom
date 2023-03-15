@@ -27,14 +27,14 @@ function StoreScreen({ user, product }) {
   Cookies.set( 'Seller', user[0]._id)   
   //Cookies.set( 'Seller', JSON.stringify(user[0]._id) )   
       
- console.log(user)
+ //console.log(user)
   return (
     <Layout>
     <SubLayout/>
   
       <div>
         {user.map((heads) => (
-          <HeadBanner key={heads._id} img1={heads.img1} />
+          <HeadBanner key={heads._id} banner={heads.banner} />
         ))}
 
         <div className="lg:justify-center mt-4">
@@ -51,7 +51,8 @@ function StoreScreen({ user, product }) {
                     key={sto._id}
                     _id={sto._id}
                     productname={sto.productname}
-                    price={sto.price}
+                    listprice={sto.listprice}
+                    saleprice={sto.saleprice}
                     image={sto.image}
                     description1={sto.description1}
                     user={sto.user}

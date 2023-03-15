@@ -42,6 +42,8 @@ function reducer(state, action) {
 export default function AdminProductEditScreen() {
   const { query } = useRouter();
   const [simage, setSimage] = useState();
+  const [image, setImage] = useState();
+  const [productname, setProductname] = useState();
   const productId = query.id;
   const [{ loading, error, loadingUpdate, loadingUpload }, dispatch] =
     useReducer(reducer, {
@@ -63,12 +65,14 @@ export default function AdminProductEditScreen() {
         const { data } = await axios.get(`/api/admin/products/${productId}`);
         dispatch({ type: 'FETCH_SUCCESS' });
         setValue('productname', data.productname);
-        setValue('price', data.price);
+        setValue('listprice', data.listprice);
+        setValue('saleprice', data.saleprice);
         setValue('imageField', data.image);
         setValue('description1', data.description1);
         setValue('description2', data.description2);
-
-        setValue('description', data.description);
+        setValue('countInStock', data.countInStock);
+        setImage(data.image)
+        setProductname(data.productname)
       } catch (err) {
         dispatch({ type: 'FETCH_FAIL', payload: getError(err) });
       }
@@ -106,25 +110,27 @@ export default function AdminProductEditScreen() {
 
   const submitHandler = async ({
     productname,
-    price,
+    listprice,
+    saleprice,
     description1,
     imageField,
     description2,
-    description,
+    countInStock,
   }) => {
     try {
       dispatch({ type: 'UPDATE_REQUEST' });
       await axios.put(`/api/admin/products/${productId}`, {
         productname,
-        price,
+        listprice,
+        saleprice,
         description1,
         imageField,
         description2,
-        description,
+        countInStock,
       });
       dispatch({ type: 'UPDATE_SUCCESS' });
       toast.success('Product updated successfully');
-      router.push('/admin/products/productinput');
+      router.push('/admin/products/productedit');
     } catch (err) {
       dispatch({ type: 'UPDATE_FAIL', payload: getError(err) });
       toast.error(getError(err));
@@ -144,7 +150,7 @@ export default function AdminProductEditScreen() {
               className="mx-auto max-w-screen-md"
               onSubmit={handleSubmit(submitHandler)}
             >
-              <h1 className="mb-4 text-xl">{`Edit Product ${productId}`}</h1>
+              <h1 className="mb-4 text-xl">{`Edit Product : ${productname}`}</h1>
               <div className="mb-4">
                 <label htmlFor="productname">Product Name</label>
                 <input
@@ -164,17 +170,47 @@ export default function AdminProductEditScreen() {
               </div>
 
               <div className="mb-4">
-                <label htmlFor="price">Price</label>
+                <label htmlFor="listprice">List Price</label>
                 <input
                   type="text"
                   className="w-full"
-                  id="price"
-                  {...register('price', {
-                    required: 'Please enter price',
+                  id="listprice"
+                  {...register('listprice', {
+                    required: 'Please enter listprice',
                   })}
                 />
-                {errors.price && (
-                  <div className="text-red-500">{errors.price.message}</div>
+                {errors.listprice && (
+                  <div className="text-red-500">{errors.listprice.message}</div>
+                )}
+              </div>
+
+              <div className="mb-4">
+                <label htmlFor="saleprice">Sale Price</label>
+                <input
+                  type="text"
+                  className="w-full"
+                  id="saleprice"
+                  {...register('saleprice', {
+                    required: 'Please enter saleprice',
+                  })}
+                />
+                {errors.saleprice && (
+                  <div className="text-red-500">{errors.saleprice.message}</div>
+                )}
+              </div>
+
+              <div className="mb-4">
+                <label htmlFor="countInStock">Inventory</label>
+                <input
+                  type="text"
+                  className="w-full"
+                  id="countInStock"
+                  {...register('countInStock', {
+                    required: 'Please enter countInStock',
+                  })}
+                />
+                {errors.countInStock && (
+                  <div className="text-red-500">{errors.countInStock.message}</div>
                 )}
               </div>
 
@@ -211,28 +247,15 @@ export default function AdminProductEditScreen() {
                 )}
               </div>
 
-              <div className="mb-4">
-                <label htmlFor="countInStock">description</label>
-                <input
-                  type="text"
-                  className="w-full"
-                  id="description"
-                  {...register('description', {
-                    required: 'Please enter description',
-                  })}
-                />
-                {errors.description && (
-                  <div className="text-red-500">
-                    {errors.description.message}
-                  </div>
-                )}
-              </div>
-              <div className="mb-4">
+             <div>
+             <Image src={image} alt='productname' width={300} height={500} /> 
+             </div>
+              {/* <div className="mb-4">
                 <label htmlFor="image">image</label>
                 <input
                   type="text"
                   className="w-full"
-                  id="imageField"
+                  //id="imageField"
                   {...register('imageField', {
                     required: 'Please enter image',
                   })}
@@ -242,9 +265,8 @@ export default function AdminProductEditScreen() {
                     {errors.imageField.message}
                   </div>
                 )}
-              </div>
-              {/* <p>{simage}</p>
-              <Image src={simage} alt="df" width={100} height={100} /> */}
+              </div> */}
+             
               <div className="mb-4">
                 <label htmlFor="imageFile">Upload image</label>
                 <input

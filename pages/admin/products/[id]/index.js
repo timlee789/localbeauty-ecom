@@ -225,20 +225,7 @@ export default function AdminProductEditScreen() {
               )}
             </div>
 
-            <div className="mb-4">
-              <label htmlFor="countInStock">description</label>
-              <input
-                type="text"
-                className="w-full"
-                id="description"
-                {...register('description', {
-                  required: 'Please enter description',
-                })}
-              />
-              {errors.description && (
-                <div className="text-red-500">{errors.description.message}</div>
-              )}
-            </div>
+           
             <div className="mb-4">
               <label htmlFor="image">image</label>
               <input

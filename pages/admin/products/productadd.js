@@ -50,23 +50,25 @@ export default function AdminProductScreen() {
 
   const submitHandler = async ({
     productname,
-    price,
+    listprice,
+    saleprice,
     stock,
     description1,
     description2,
     imageField,
-    category,
+    //category,
   }) => {
     try {
       console.log(description1, productname);
       await axios.post('/api/product/productregister', {
         productname,
-        price,
+        listprice,
+        saleprice,
         stock,
         description1,
         description2,
         imageField,
-        category,
+        //category,
       });
       router.push('/admin/products/productedit');
       // if (result.error) {
@@ -109,11 +111,11 @@ export default function AdminProductScreen() {
         className="mx-auto max-w-screen-md"
         onSubmit={handleSubmit(submitHandler)}
       >
-         <select {...register("category")}>
+         {/* <select {...register("category")}>
           {category.map((cat) => (
              <option value={cat.category}>{cat.category}</option>
           ))}
-      </select>
+      </select> */}
 
         <div className="mb-4">
           <label htmlFor="productname">productname</label>
@@ -131,15 +133,27 @@ export default function AdminProductScreen() {
           )}
         </div>
         <div className="mb-4">
-          <label htmlFor="price">price</label>
+          <label htmlFor="listprice">List Price</label>
           <input
-            type="price"
-            {...register('price', { required: 'Please enter price' })}
+            type="listprice"
+            {...register('listprice', { required: 'Please enter listprice' })}
             className="w-full"
-            id="price"
+            id="listprice"
           ></input>
-          {errors.price && (
-            <div className="text-red-500">{errors.price.message}</div>
+          {errors.listprice && (
+            <div className="text-red-500">{errors.listprice.message}</div>
+          )}
+        </div>
+        <div className="mb-4">
+          <label htmlFor="saleprice">Sale Price</label>
+          <input
+            type="saleprice"
+            {...register('saleprice', { required: 'Please enter saleprice' })}
+            className="w-full"
+            id="saleprice"
+          ></input>
+          {errors.saleprice && (
+            <div className="text-red-500">{errors.saleprice.message}</div>
           )}
         </div>
         <div className="mb-4">

@@ -31,11 +31,12 @@ const putHandler = async (req, res) => {
   const product = await Product.findById(req.query.id);
   if (product) {
     product.productname = req.body.productname;
-    product.price = req.body.price;
+    product.listprice = req.body.listprice;
+    product.saleprice = req.body.saleprice;
     product.description1 = req.body.description1;
     product.image = req.body.imageField;
     product.description2 = req.body.description2;
-    product.description = req.body.description;
+    product.countInStock = req.body.countInStock;
     await product.save();
     await db.disconnect();
     res.send({ message: 'Product updated successfully' });

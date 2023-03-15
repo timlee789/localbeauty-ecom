@@ -51,9 +51,16 @@ function Layout({ title, children }) {
       <div className="flex min-h-screen flex-col justify-between ">
         <header>
           <nav className="flex h-12 items-center px-4 justify-between shadow-md ">
-            <Link href="/">
-              <div className="text-lg font-bold">Local Beauty</div>
+            {session?.user?.isAdmin? (
+              <Link href="/">
+              <div className="text-lg font-bold">{session.user.name}</div>
+              </Link>
+            ) : (
+              <Link href="/">
+              <div className="text-lg font-bold">Localflyer</div>
             </Link>
+            )} 
+           
             <div>{seller}</div>
            <div className='flex justify-between'>
               <Link href="/cart" className="px-4 flex">
@@ -69,17 +76,18 @@ function Layout({ title, children }) {
               {session?.user?.isAdmin? (
                  <Menu as="div" className="relative inline-block z-10">
                  <Menu.Button className="text-blue-600 font-bold text-lg">       
-                  { session.user.name }
+                  {/* { session.user.name } */}
+                  Menu
                  </Menu.Button>
                  <Menu.Items className="absolute right-0 w-56 origin-top-right bg-white  shadow-lg ">
-                    <Menu.Item>
+                    {/* <Menu.Item>
                     <DropdownLink
                        className="dropdown-link"
                        href="/admin/dashboard"
                      >
                        Dashboard
                      </DropdownLink>
-                   </Menu.Item>
+                   </Menu.Item> */}
                     <Menu.Item>
                     <DropdownLink
                        className="dropdown-link"

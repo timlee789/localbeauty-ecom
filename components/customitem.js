@@ -62,8 +62,10 @@ export default function CustomItemScreen(props) {
       </div>
       <div>
       <div className="bg-slate-100 mb-6 text-center">
-        
-        <div className="font-bold text-lg">U$: {props.price}</div>
+        <div className='flex justify-center'>
+        <div className="font-bold text-lg text-red-800 line-through"> U$: {props.listprice}</div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <div className="font-bold text-lg">sale U$: {props.saleprice}</div>
+        </div>
         <div>{props.description}</div>
         <div className="font-bold">{props.description1}</div>
         <div>{props.productname}</div>

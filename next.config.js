@@ -13,16 +13,65 @@ module.exports = {
   async redirects() {
     return [
       {
-        source: '/great',
-        destination: '/store/635aa140e6e116c9571360d6',
+        source: '/site1',
+        destination: '/store/6410ab4720f86fbe3cb7652c',
         permanent: true,
       },
       {
-        source: '/about',
-        destination: '/store/635aa140e6e116c9571360d2',
+        source: '/site2',
+        destination: '/store/6410ab4720f86fbe3cb76529',
         permanent: true,
       },
-     
+      {
+        source: '/site3',
+        destination: '/store/6410ab4720f86fbe3cb7652a',
+        permanent: true,
+      },
+      {
+        source: '/site4',
+        destination: '/store/6410ab4720f86fbe3cb7652e',
+        permanent: true,
+      },
+      {
+        source: '/site5',
+        destination: '/store/6410ab4720f86fbe3cb7652f',
+        permanent: true,
+      },
+      {
+        source: '/site6',
+        destination: '/store/6410ab4720f86fbe3cb76530',
+        permanent: true,
+      },
+      {
+        source: '/site7',
+        destination: '/store/6410ab4720f86fbe3cb76528',
+        permanent: true,
+      },
+      {
+        source: '/site8',
+        destination: '/store/6410ab4720f86fbe3cb76525',
+        permanent: true,
+      },
+      {
+        source: '/site9',
+        destination: '/store/6410ab4720f86fbe3cb76527',
+        permanent: true,
+      },
+      {
+        source: '/site10',
+        destination: '/store/6410ab4720f86fbe3cb7652d',
+        permanent: true,
+      },
+      {
+        source: '/site11',
+        destination: '/store/6410ab4720f86fbe3cb76526',
+        permanent: true,
+      },
+      {
+        source: '/site12',
+        destination: '/store/6410ab4720f86fbe3cb7652b',
+        permanent: true,
+      },
      
     ]
   },

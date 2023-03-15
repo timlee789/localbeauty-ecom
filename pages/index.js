@@ -31,7 +31,7 @@ export default function Home({ storeinfo }) {
           <StoreInfo
             key={sto._id}
             id={sto._id}
-            img1={sto.img1}
+            banner={sto.banner}
             url={sto.url}
             state={sto.state}
             name={sto.name}

@@ -40,7 +40,7 @@ export default function AdminOrderScreen() {
   return (
     <Layout title="Admin Dashboard">
       <div className="grid md:grid-cols-4 md:gap-5">
-        <div>
+        {/* <div>
           <ul>
             <li>
               <Link href="/admin/dashboard">Dashboard</Link>
@@ -57,7 +57,7 @@ export default function AdminOrderScreen() {
               <Link href="/admin/users">Users</Link>
             </li>
           </ul>
-        </div>
+        </div> */}
         <div className="overflow-x-auto md:col-span-3">
           <h1 className="mb-4 text-xl">Admin Orders</h1>
 
@@ -74,8 +74,8 @@ export default function AdminOrderScreen() {
                     <th className="p-5 text-left">USER</th>
                     <th className="p-5 text-left">DATE</th>
                     <th className="p-5 text-left">TOTAL</th>
-                    <th className="p-5 text-left">PAID</th>
-                    <th className="p-5 text-left">DELIVERED</th>
+                    {/* <th className="p-5 text-left">PAID</th>
+                    <th className="p-5 text-left">DELIVERED</th> */}
                     <th className="p-5 text-left">ACTION</th>
                   </tr>
                 </thead>
@@ -90,7 +90,7 @@ export default function AdminOrderScreen() {
                         {order.createdAt.substring(0, 10)}
                       </td>
                       <td className="p-5">${order.totalPrice}</td>
-                      <td className="p-5">
+                      {/* <td className="p-5">
                         {order.isPaid
                           ? `${order.paidAt.substring(0, 10)}`
                           : 'not paid'}
@@ -99,7 +99,7 @@ export default function AdminOrderScreen() {
                         {order.isDelivered
                           ? `${order.deliveredAt.substring(0, 10)}`
                           : 'not delivered'}
-                      </td>
+                      </td> */}
                       <td className="p-5">
                         <Link href={`/orders/${order._id}`} passHref>
                           <div>Details</div>

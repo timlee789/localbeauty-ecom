@@ -12,7 +12,7 @@ const handler = async (req, res) => {
   await db.connect();
  
   const userid = user._id;
-  console.log(userid)
+  //console.log(userid)
   const products = await Product.find({ user: userid });
   await db.disconnect();
   res.send(products);
