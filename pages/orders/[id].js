@@ -124,17 +124,17 @@ function OrderScreen() {
                 <div className="grid md:grid-cols-4 md:gap-5">
                   <div className="overflow-x-auto md:col-span-3">
                      <div className="card p-5">
-                        <h2 className="mb-2 text-lg">Shipping Address</h2>
+                        <h2 className="mb-2 text-lg">Client Data</h2>
                             <div>
                                 {shippingAddress.name}, {shippingAddress.email}, {''}
                                 {shippingAddress.city}, {shippingAddress.zip}, {''}
                                 {shippingAddress.tel}
                             </div>
-                            {isDelivered ? (
+                            {/* {isDelivered ? (
                                 <div className="alert-success">Delivered at {deliveredAt}</div>
                             ) : (
                                 <div className="alert-error">Not Delivered</div>
-                            ) }
+                            ) } */}
                      </div>
                      <div className="card p-5"> 
                        <h2 className="mb-2 text-lg">Payment Method</h2>
@@ -210,7 +210,7 @@ function OrderScreen() {
                                 <div>${totalPrice}</div>
                             </div>
                         </li>
-                        {!isPaid && (
+                        {/* {!isPaid && (
                             <li>
                                 {isPending ? ( <div>Loading...</div>):
                                 (
@@ -224,7 +224,7 @@ function OrderScreen() {
                                 )}
                                 {loadingPay && <div>Loading...</div>}
                             </li>
-                        )}
+                        )} */}
                     </ul>
                   </div>
                 </div>

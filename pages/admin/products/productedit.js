@@ -78,7 +78,7 @@ export default function ProductEdit() {
            
             {products.map((order) => (
               <div key={order._id} >
-                <div className="border-b">
+                <div className="border-b card p-4 m-2">
                 <div className=" p-2 ">
                     <Image
                       src={order.image}

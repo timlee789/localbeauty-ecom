@@ -76,7 +76,7 @@ export default function Productpage() {
            
             {products.map((order) => (
               <div key={order._id}>
-                <div className="border-b">
+                <div className="border-b card p-4 m-2">
                 <div className=" p-2 ">
                     <Image
                       src={order.image}
@@ -87,9 +87,9 @@ export default function Productpage() {
                   </div>
                   <div className="text-center text-blue-500 ">{order.productname}</div>
                   <div  className='flex justify-center'>
-                  <div className=" font-bold text-center "> ${order.price}</div>
+                  <div className=" font-bold text-center text-lg text-red-800 line-through"> ${order.listprice}</div>
                   <div className='ml-17'>  &nbsp; &nbsp; &nbsp;   sale Price&nbsp;&nbsp; </div>
-                  <div className=" font-bold text-center ">${order.price}</div>
+                  <div className=" font-bold text-center ">${order.saleprice}</div>
                   </div>
                   <div className="text-center text-blue-500 ">{order.description1}</div>
                   <div className="text-center text-blue-500 ">{order.description2}</div>
