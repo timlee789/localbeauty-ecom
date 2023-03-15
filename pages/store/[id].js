@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import db from '../../utils/db';
 import CustomItemScreen from '../../components/customitem';
 import Layout from '../../components/layout';
-import SubLayout from '@/components/subLayout';
+//import SubLayout from '@/components/subLayout';
 import Product from '../../models/Product';
 import User from '../../models/Users';
 import HeadBanner from '../../components/headbanner';
@@ -30,7 +30,7 @@ function StoreScreen({ user, product }) {
  //console.log(user)
   return (
     <Layout>
-    <SubLayout/>
+  
   
       <div>
         {user.map((heads) => (

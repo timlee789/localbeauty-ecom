@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import Layout from '@/components/layout';
-import { getError } from '@/utils/error';
+import getError from '@/utils/error';
 
 function reducer(state, action) {
   switch (action.type) {

@@ -1,4 +1,4 @@
-import { Cookies } from 'next/dist/server/web/spec-extension/cookies';
+import Cookies from 'js-cookie';
 //import { useRouter } from 'next/router';
 import React, { useContext, useEffect } from 'react';
 import { useForm } from 'react-hook-form';

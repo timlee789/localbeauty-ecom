@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useReducer } from 'react';
 import Link from 'next/link';
-import { getError } from '../../utils/error';
+import getError from '../../utils/error';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import Image from 'next/image';

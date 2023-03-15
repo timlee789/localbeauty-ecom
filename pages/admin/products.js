@@ -6,7 +6,7 @@ import React, { useEffect, useReducer } from 'react';
 import { toast } from 'react-toastify';
 //import { toToastItem } from 'react-toastify/dist/utils';
 import Layout from '../../components/Layout';
-import { getError } from '../../utils/error';
+import getError from '../../utils/error';
 
 function reducer(state, action) {
   switch (action.type) {
