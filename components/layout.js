@@ -16,7 +16,7 @@ function Layout({ title, children }) {
   const { state, dispatch } = useContext(Store);
   const { cart } = state;
   const [cartItemsCount, setCartItemsCount] = useState(0);
-  const seller = Cookie.get('Seller');
+  const sellername = Cookie.get('Sellername');
   const [hydrated, setHydrated] = React.useState(false);
 
   useEffect(() => {
@@ -51,17 +51,18 @@ function Layout({ title, children }) {
       <div className="flex min-h-screen flex-col justify-between ">
         <header>
           <nav className="flex h-12 items-center px-4 justify-between shadow-md ">
-            {session?.user?.isAdmin? (
+
+             {session?.user?.isAdmin? ( 
               <Link href="/">
               <div className="text-lg font-bold">{session.user.name}</div>
               </Link>
             ) : (
               <Link href="/">
-              <div className="text-lg font-bold">Localflyer</div>
-            </Link>
+              <div className="text-lg font-bold">{sellername}</div>
+              </Link>
             )} 
            
-            <div>{seller}</div>
+           
            <div className='flex justify-between'>
               <Link href="/cart" className="px-4 flex">
                 Cart

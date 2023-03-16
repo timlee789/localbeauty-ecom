@@ -31,7 +31,7 @@ function reducer(state, action) {
 }
 function OrderScreen() {
   // order/:id
-  const [ {isPending}, paypalDispatch] = usePayPalScriptReducer()
+  //const [ {isPending}, paypalDispatch] = usePayPalScriptReducer()
   const { query } = useRouter();
   const orderId = query.id;
 
@@ -57,19 +57,19 @@ function OrderScreen() {
       }
     } else {
       const loadPaypalScript = async () => {
-        const { data: clientId } = await axios.get('/api/keys/paypal');
-        paypalDispatch({
-          type: 'resetOption',
-          value: {
-            'client-id': clientId,
-            currency: 'USD'
-          }
-        });
-        paypalDispatch({ type: 'setLoadingStatus', value: 'pending'});
+        // const { data: clientId } = await axios.get('/api/keys/paypal');
+        // paypalDispatch({
+        //   type: 'resetOption',
+        //   value: {
+        //     'client-id': clientId,
+        //     currency: 'USD'
+        //   }
+        // });
+        // paypalDispatch({ type: 'setLoadingStatus', value: 'pending'});
       };
       loadPaypalScript();
     }
-  }, [order, orderId, paypalDispatch, successPay]);
+  }, [order, orderId, successPay]);
   const {
     shippingAddress,
     paymentMethod,
@@ -124,17 +124,17 @@ function OrderScreen() {
         <div className="grid md:grid-cols-4 md:gap-5">
           <div className="overflow-x-auto md:col-span-3">
             <div className="card  p-5">
-              <h2 className="mb-2 text-lg">Shipping Address</h2>
+              <h2 className="mb-2 text-lg">Customer Info</h2>
               <div>
-                {shippingAddress.fullName}, {shippingAddress.address},{' '}
-                {shippingAddress.city}, {shippingAddress.postalCode},{' '}
-                {shippingAddress.country}
+                Name: {shippingAddress.name}, <br/>  Email: {shippingAddress.email},{' '}<br/>
+                Tel: {shippingAddress.tel}, {' '}
+                
               </div>
-              {isDelivered ? (
+              {/* {isDelivered ? (
                 <div className="alert-success">Delivered at {deliveredAt}</div>
               ) : (
                 <div className="alert-error">Not delivered</div>
-              )}
+              )} */}
             </div>
 
             <div className="card p-5">
@@ -163,7 +163,7 @@ function OrderScreen() {
                     <tr key={item._id} className="border-b">
                       <td>
                         <Link href={`/product/${item.slug}`}>
-                          <a className="flex items-center">
+                          <div className="flex items-center">
                             <Image
                               src={item.image}
                               alt={item.name}
@@ -172,7 +172,7 @@ function OrderScreen() {
                             ></Image>
                             &nbsp;
                             {item.name}
-                          </a>
+                          </div>
                         </Link>
                       </td>
                       <td className=" p-5 text-right">{item.quantity}</td>
@@ -214,7 +214,7 @@ function OrderScreen() {
                     <div>${totalPrice}</div>
                   </div>
                 </li>
-                {!isPaid && (
+                {/* {!isPaid && (
                   <li>
                     {isPending ? ( <div>Loading...</div>)  
                     : (
@@ -228,7 +228,7 @@ function OrderScreen() {
                     )}
                     {loadingPay && <div>Loading...</div>}
                   </li>
-                )}
+                )} */}
               </ul>
             </div>
           </div>

@@ -19,7 +19,7 @@ export default function PlaceOrderScreen() {
   const round2 = (num) => Math.round(num * 100 + Number.EPSILON) / 100;
 
   const itemsPrice = round2(
-    cartItems.reduce((a, c) => a + c.quantity * c.price, 0)
+    cartItems.reduce((a, c) => a + c.quantity * c.saleprice, 0)
   ); // 123.4567 => 123.46
 
   const shippingPrice = itemsPrice > 200 ? 0 : 15;
@@ -57,7 +57,8 @@ export default function PlaceOrderScreen() {
           cartItems: [],
         })
       );
-      router.push(`/orders/${data._id}`);
+      router.push(`/`);
+      //router.push(`/orders/${data._id}`);
     } catch (err) {
       setLoading(false);
       toast.error(getError(err));
@@ -128,9 +129,9 @@ export default function PlaceOrderScreen() {
                         </Link>
                       </td>
                       <td className=" p-5 text-right">{item.quantity}</td>
-                      <td className="p-5 text-right">${item.price}</td>
+                      <td className="p-5 text-right">${item.saleprice}</td>
                       <td className="p-5 text-right">
-                        ${item.quantity * item.price}
+                        ${item.quantity * item.saleprice}
                       </td>
                     </tr>
                   ))}
@@ -157,12 +158,12 @@ export default function PlaceOrderScreen() {
                     <div>${taxPrice}</div>
                   </div>
                 </li>
-                <li>
+                {/* <li>
                   <div className="mb-2 flex justify-between">
                     <div>Shipping</div>
                     <div>${shippingPrice}</div>
                   </div>
-                </li>
+                </li> */}
                 <li>
                   <div className="mb-2 flex justify-between">
                     <div>Total</div>

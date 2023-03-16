@@ -25,6 +25,7 @@ function StoreScreen({ user, product }) {
 //     payload: user[0]._id
 // });
   Cookies.set( 'Seller', user[0]._id)   
+  Cookies.set( 'Sellername', user[0].name)   
   //Cookies.set( 'Seller', JSON.stringify(user[0]._id) )   
       
  //console.log(user)
@@ -75,13 +76,10 @@ export async function getServerSideProps(context) {
   await db.connect();
   const user = await User.find({ _id: id });
   const product = await Product.find({ user: id });
-  //const featuredProducts = await Product.find({ isFeatured: true }).lean();
   await db.disconnect();
   return {
     props: {
       product: JSON.parse(JSON.stringify(product)),
-      //featuredProducts: featuredProducts.map(db.convertDocToObj),
-      //user: user,
       user: JSON.parse(JSON.stringify(user)),
     },
   };

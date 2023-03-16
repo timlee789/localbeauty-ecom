@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   );
 }
 
-function Auth({ children }) {
+function Auth({ children, adminOnly }) {
   const router = useRouter();
   const { status, data: session } = useSession({
     required: true,
