@@ -1,8 +1,6 @@
 import axios from 'axios';
 import Link from 'next/link';
 import { Bar } from 'react-chartjs-2';
-
-
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -13,7 +11,7 @@ import {
   Legend,
 } from 'chart.js';
 import React, { useEffect, useReducer } from 'react';
-import Layout from '../../components/Layout';
+import Layout from '../../components/layout';
 import getError from '../../utils/error';
 
 ChartJS.register(
