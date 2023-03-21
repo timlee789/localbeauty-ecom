@@ -2,7 +2,6 @@ import db from '../utils/db';
 import StoreInfo from '../components/storeinfo';
 import Layout from '../components/layout';
 import Users from '../models/Users';
-//import Image from 'next/image';
 import LoginScreen from '@/components/login';
 import { useSession } from 'next-auth/react';
 import Productpage from '@/components/productpage';
@@ -44,19 +43,19 @@ export default function Home({storeinfo}) {
     </Layout>
   );
 }
-// export async function getServerSideProps() {
-//   await db.connect();
-//   const users = await Users.find().sort({ state: 1 }).lean();
-//   return {
-//     props: {
-//       storeinfo: users.map((sto) => ({
-//         _id: sto._id.toString(),
-//         name: sto.name || null,
-//         city: sto.city || null,
-//         state: sto.state || null,
-//         address: sto.address || null,
-//         tel: sto.tel || null,
-//       })),
-//     },
-//   };
-// }
+export async function getServerSideProps() {
+  await db.connect();
+  const users = await Users.find().sort({ state: 1 }).lean();
+  return {
+    props: {
+      storeinfo: users.map((sto) => ({
+        _id: sto._id.toString(),
+        name: sto.name || null,
+        city: sto.city || null,
+        state: sto.state || null,
+        address: sto.address || null,
+        tel: sto.tel || null,
+      })),
+    },
+  };
+}
