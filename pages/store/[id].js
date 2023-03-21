@@ -2,24 +2,21 @@ import React, { useContext } from 'react';
 import db from '../../utils/db';
 import CustomItemScreen from '../../components/customitem';
 import Layout from '../../components/layout';
-//import SubLayout from '@/components/subLayout';
 import Product from '../../models/Product';
 import User from '../../models/Users';
 import HeadBanner from '../../components/headbanner';
 import Cookies from 'js-cookie';
 import Store from '../../utils/Store';
-
-// import Registration from '../contest/registration';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import Link from 'next/link';
 
 
 
-function StoreScreen({ user, product }) {
-//    const { state, dispatch } = useContext(Store);
-//    const { cart } = state;
-//    const { userStore} = cart;
+
+function StoreScreen({ user, product}) {
+   //const { state, dispatch } = useContext(Store);
+   //const { cart } = state;
+   //const { userStore} = cart;
 //    dispatch({
 //     type: 'SAVE_USER_STORE',
 //     payload: user[0]._id

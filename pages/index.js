@@ -1,14 +1,14 @@
 import db from '../utils/db';
 import StoreInfo from '../components/storeinfo';
 import Layout from '../components/layout';
-//import Users from '../models/Users';
+import Users from '../models/Users';
 //import Image from 'next/image';
 import LoginScreen from '@/components/login';
 import { useSession } from 'next-auth/react';
 import Productpage from '@/components/productpage';
 
 
-export default function Home() {
+export default function Home({storeinfo}) {
   const {status, data: session} = useSession();
  
   return (
