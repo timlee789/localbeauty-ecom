@@ -70,37 +70,37 @@ export default function AdminOrderScreen() {
               <table className="min-w-full">
                 <thead className="border-b">
                   <tr>
-                    <th className="px-5 text-left">ID</th>
-                    <th className="p-5 text-left">USER</th>
-                    <th className="p-5 text-left">DATE</th>
-                    <th className="p-5 text-left">TOTAL</th>
-                    {/* <th className="p-5 text-left">PAID</th>
-                    <th className="p-5 text-left">DELIVERED</th> */}
-                    <th className="p-5 text-left">ACTION</th>
+                    <th className="px-3 text-left text-sm">ID</th>
+                    <th className="p-2 text-left text-sm">USER</th>
+                    <th className="p-2 text-left text-sm">DATE</th>
+                    <th className="p-2 text-left text-sm">TOTAL</th>
+                    {/* <th className="p-2 text-left">PAID</th>
+                    <th className="p-2 text-left">DELIVERED</th> */}
+                    <th className="p-2 text-left text-sm">VIEW</th>
                   </tr>
                 </thead>
                 <tbody>
                   {orders.map((order) => (
                     <tr key={order._id} className="border-b">
-                      <td className="p-5">{order._id.substring(20, 24)}</td>
-                      <td className="p-5">
+                      <td className="p-2 text-sm">{order._id.substring(20, 24)}</td>
+                      <td className="p-2 text-sm">
                         {order.shippingAddress.name }
                       </td>
-                      <td className="p-5">
+                      <td className="p-2 text-sm">
                         {order.createdAt.substring(0, 10)}
                       </td>
-                      <td className="p-5">${order.totalPrice}</td>
-                      {/* <td className="p-5">
+                      <td className="p-2 text-sm">${order.totalPrice}</td>
+                      {/* <td className="p-2">
                         {order.isPaid
                           ? `${order.paidAt.substring(0, 10)}`
                           : 'not paid'}
                       </td>
-                      <td className="p-5">
+                      <td className="p-2">
                         {order.isDelivered
                           ? `${order.deliveredAt.substring(0, 10)}`
                           : 'not delivered'}
                       </td> */}
-                      <td className="p-5">
+                      <td className="p-2 text-sm">
                         <Link href={`/orders/${order._id}`} passHref>
                           <div>Details</div>
                         </Link>

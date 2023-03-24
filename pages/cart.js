@@ -39,10 +39,11 @@ function CartScreen() {
             <table className="min-w-full">
               <thead className="border-b">
                 <tr>
-                  <th className="px-5 text-left">Item</th>
-                  <th className="p-5 text-right">Quantity</th>
-                  <th className="p-5 text-right">Price</th>
-                  <th className="p-5">Action</th>
+                  <th className="px-2 text-left text-sm">Item</th>
+                  <th className="px-2 text-left text-sm">Name</th>
+                  <th className="p-2 text-right text-sm">Qty</th>
+                  <th className="p-2 text-right text-sm">Price</th>
+                  <th className="p-2 text-sm">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -57,12 +58,18 @@ function CartScreen() {
                             width={50}
                             height={60}
                           />
-                          &nbsp; {item.productname} &nbsp; {item.countInStock}
-                          {item.user}
+                        
                         </div>
                       </Link>
                     </td>
-                    <td className="p-5 text-right">
+                    <td>
+                      <Link href={`/product/${item._id}`}>
+                        <div className="flex items-center text-xs">
+                          &nbsp; {item.productname} 
+                        </div>
+                      </Link>
+                    </td>
+                    <td className="p-2 text-right">
                       <select
                         value={item.quantity}
                         onChange={(e) =>
@@ -76,8 +83,8 @@ function CartScreen() {
                         ))}
                       </select>
                     </td>
-                    <td className="p-5 text-right">{item.saleprice}</td>
-                    <td className="p-5 text-center">
+                    <td className="p-2 text-right text-sm">{item.saleprice}</td>
+                    <td className="p-2 text-center text-sm">
                       <button onClick={() => removeItemHandler(item)}>
                         Delete
                       </button>
@@ -87,7 +94,7 @@ function CartScreen() {
               </tbody>
             </table>
           </div>
-          <div className="card p-5">
+          <div className="card p-5 mt-5">
             <ul>
               <li>
                 <div className="pb-3 text-xl">
