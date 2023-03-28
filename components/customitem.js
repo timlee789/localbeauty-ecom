@@ -20,13 +20,13 @@ export default function CustomItemScreen(props) {
   return (
     <div>
       <div className="flex justify-center card ">
-         <Carousel showArrows={true} showThumbs={false} swipeable={true} autoPlay>
-        <div>
+         <Carousel showArrows={true} showThumbs={false} swipeable={true} autoPlay >
+        <div >
           <Image
             src={props.image}
             alt="banner"
-            width={300}
-            height={450}
+            width={200}
+            height={280}
             className="element1"
           />
           </div>
@@ -34,8 +34,8 @@ export default function CustomItemScreen(props) {
           <Image
             src={props.image}
             alt="banner"
-            width={300}
-            height={450}
+            width={200}
+            height={280}
             className="element1"
           />
           </div>
@@ -43,8 +43,8 @@ export default function CustomItemScreen(props) {
           <Image
             src={props.image}
             alt="banner"
-            width={300}
-            height={450}
+            width={200}
+            height={280}
             className="element1"
           />
           </div>
@@ -52,8 +52,8 @@ export default function CustomItemScreen(props) {
           <Image
             src={props.image}
             alt="banner"
-            width={300}
-            height={450}
+            width={200}
+            height={280}
             className="element1"
           />
           </div>
@@ -63,14 +63,14 @@ export default function CustomItemScreen(props) {
       <div>
       <div className="bg-slate-100 mb-6 text-center">
         <div className='flex justify-center'>
-        <div className="font-bold text-lg text-red-800 line-through"> U$: {props.listprice}</div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <div className="font-bold text-lg">sale U$: {props.saleprice}</div>
+        <div className="text-xs text-red-800 line-through"> U$: {props.listprice}</div> &nbsp;&nbsp;&nbsp;
+        <div className="font-bold text-sm">sale U$: {props.saleprice}</div>
         </div>
         <div>{props.description}</div>
-        <div className="font-bold">{props.description1}</div>
-        <div>{props.productname}</div>
+        <div className="font-bold text-xs text-blue-800 mb-4 mt-2">{props.description1}</div>
+        <div className='text-xs'>{props.productname}</div>
         {/* <div>{props.user}</div> */}
-        <button className="primary-button w-full" onClick={addToCartHandler}>
+        <button className="primary-button w-full font-bold text-sm" onClick={addToCartHandler}>
           Add to Cart
         </button>
       </div>

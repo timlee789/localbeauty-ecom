@@ -57,14 +57,16 @@ function Layout({ title, children }) {
               <div className="text-lg font-bold">{session.user.name}</div>
               </Link>
             ) : (
+             
               <Link href="/">
               <div className="text-lg font-bold">{sellername}</div>
               </Link>
-            )} 
+            ) } 
            
            
            <div className='flex justify-between'>
-              <Link href="/cart" className="px-4 flex">
+            {sellername? (
+              <Link href="/cart" className="px-8 flex font-bold">
                 Cart
                 {cartItemsCount > 0 && (
                   <span className="ml-1 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white">
@@ -72,6 +74,10 @@ function Layout({ title, children }) {
                   </span>
                 )}
               </Link>
+            ) : (
+               <div> </div>
+            )}
+              
               
            
               {session?.user?.isAdmin? (
@@ -122,14 +128,14 @@ function Layout({ title, children }) {
                        Users
                      </DropdownLink>
                    </Menu.Item> */}
-                   <Menu.Item>
+                   {/* <Menu.Item>
                      <DropdownLink
                        className="dropdown-link"
                        href="/admin/campaign/campaignhistory"
                      >
                        Campaign History
                      </DropdownLink>
-                   </Menu.Item>
+                   </Menu.Item> */}
                    {/* <Menu.Item>
                      <DropdownLink
                        className="dropdown-link"
@@ -138,14 +144,14 @@ function Layout({ title, children }) {
                        Campaign Input
                      </DropdownLink>
                    </Menu.Item> */}
-                   <Menu.Item>
+                   {/* <Menu.Item>
                      <DropdownLink
                        className="dropdown-link"
                        href="/contest/gallery"
                      >
                        Event Gallery
                      </DropdownLink>
-                   </Menu.Item>
+                   </Menu.Item> */}
                    <Menu.Item>
                      <div
                        className="dropdown-link"
@@ -164,7 +170,7 @@ function Layout({ title, children }) {
                </div>
               ) : (
                 <Link href="/login">
-                  <div className="p-2">Login</div>
+                  <div className="font-bold text-blue-400">Login</div>
                 </Link>
               )}
             </div>

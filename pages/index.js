@@ -5,6 +5,7 @@ import Users from '../models/Users';
 import LoginScreen from '@/components/login';
 import { useSession } from 'next-auth/react';
 import Productpage from '@/components/productpage';
+import HomePage from '@/components/homepage';
 
 
 export default function Home({storeinfo}) {
@@ -21,7 +22,7 @@ export default function Home({storeinfo}) {
         </div>
       ) : (
         <div className="flex justify-center card ">
-        <LoginScreen />
+        <HomePage />
        </div>
       )}
      

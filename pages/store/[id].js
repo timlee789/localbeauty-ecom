@@ -31,9 +31,9 @@ function StoreScreen({ user, product}) {
   
   
       <div>
-        {user.map((heads) => (
+        {/* {user.map((heads) => (
           <HeadBanner key={heads._id} banner={heads.banner} />
-        ))}
+        ))} */}
 
         <div className="lg:justify-center mt-4">
           <div>
@@ -43,7 +43,7 @@ function StoreScreen({ user, product}) {
               ))}
             </div> */}
             <div>
-              <div className=" grid grid-cols-1 p-5 gap-5 md:grid-cols-4 ">
+              <div className=" grid grid-cols-2 p-2 gap-2 md:grid-cols-4 ">
                 {product.map((sto) => (
                   <CustomItemScreen
                     key={sto._id}
