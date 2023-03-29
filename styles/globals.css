@@ -58,7 +58,7 @@ textarea {
   border-radius: 550px;
 }
 .element1 {
-  height: 250px;
+  height: 240px;
   width: 200px;
   animation: nudge 2s linear alternate;
   border-radius: 10px;
@@ -69,7 +69,7 @@ textarea {
   width: 300px;
   animation: nudge 3s linear alternate;
   border-radius: 10px;
-  margin: 7px;
+  margin: 7px;background-color: blueviolet;
 }
 .element3 {
   height: 500px;

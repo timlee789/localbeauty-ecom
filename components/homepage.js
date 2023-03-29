@@ -12,9 +12,7 @@ function HomePage() {
      <Image src='/images/subbanner.jpg' width={700} height={260} alt='banner' className='mb-5' />
      <Image src='/images/subbanner2.jpg' width={700} height={260} alt='banner' className='mb-5' />
      <Image src='/images/subbanner3.jpg' width={700} height={260} alt='banner' className='mb-5' />
-     <Image src='/images/subbanner4.jpg' width={700} height={260} alt='banner' className='mb-5' />
-     
-     
+     <Image src='/images/subbanner4.jpg' width={700} height={260} alt='banner' className='mb-5' />  
      
     </div>
   );

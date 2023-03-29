@@ -43,7 +43,7 @@ function StoreScreen({ user, product}) {
               ))}
             </div> */}
             <div>
-              <div className=" grid grid-cols-2 p-2 gap-2 md:grid-cols-4 ">
+              <div className=" grid grid-cols-2 p-2 gap-2 lg:grid-cols-4 p-2 gap-2 max-w-3xl  ml-auto mr-auto">
                 {product.map((sto) => (
                   <CustomItemScreen
                     key={sto._id}

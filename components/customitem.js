@@ -18,15 +18,15 @@ export default function CustomItemScreen(props) {
     dispatch({ type: 'CART_ADD_ITEM', payload: { ...props, quantity } });
   };
   return (
-    <div>
+    <div >
       <div className="flex justify-center card ">
          <Carousel showArrows={true} showThumbs={false} swipeable={true} autoPlay >
-        <div >
+        <div>
           <Image
             src={props.image}
             alt="banner"
             width={200}
-            height={280}
+            height={240}
             className="element1"
           />
           </div>
@@ -35,8 +35,8 @@ export default function CustomItemScreen(props) {
             src={props.image}
             alt="banner"
             width={200}
-            height={280}
-            className="element1"
+            height={240}
+            className="element1 lg:element2"
           />
           </div>
         <div>
@@ -44,8 +44,8 @@ export default function CustomItemScreen(props) {
             src={props.image}
             alt="banner"
             width={200}
-            height={280}
-            className="element1"
+            height={240}
+            className="element1  lg:element2"
           />
           </div>
         <div>
@@ -53,8 +53,8 @@ export default function CustomItemScreen(props) {
             src={props.image}
             alt="banner"
             width={200}
-            height={280}
-            className="element1"
+            height={240}
+            className="element1  lg:element2"
           />
           </div>
           
