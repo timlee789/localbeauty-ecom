@@ -26,6 +26,9 @@ a {
 .primary-button {
   @apply rounded bg-amber-300 py-2 px-4 shadow outline-none hover:bg-amber-400 active:bg-amber-500
 }
+.red-button {
+  @apply rounded bg-red-600 py-2 px-4 shadow outline-none hover:bg-red-400 active:bg-red-500 text-white
+}
 .default-button {
   @apply rounded bg-gray-100 py-2 px-4 text-black shadow outline-none hover:bg-gray-200 active:bg-gray-300
 }
@@ -44,22 +47,16 @@ textarea {
   @apply my-3 rounded-lg bg-red-100 p-3 text-green-700;
 }
 .container {
-  padding: 0 2rem;
+  padding: 0 1px;
 }
-.element {
-  height: 500px;
-  width: 300px;
-  animation: nudge 1s linear alternate;
-  border-radius: 10px;
-  margin: 7px;
-}
+
 .element:hover {
   animation: mymove 10s infinite;
   border-radius: 550px;
 }
 .element1 {
-  height: 240px;
-  width: 200px;
+  height: 200px;
+  width: 250px;
   animation: nudge 2s linear alternate;
   border-radius: 10px;
   margin: 7px;

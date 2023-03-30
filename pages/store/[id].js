@@ -30,12 +30,12 @@ function StoreScreen({ user, product}) {
     <Layout>
   
   
-      <div>
-        {/* {user.map((heads) => (
+      <div className='mobile:bg-white laptop:bg-white'>
+        {user.map((heads) => (
           <HeadBanner key={heads._id} banner={heads.banner} />
-        ))} */}
+        ))}
 
-        <div className="lg:justify-center mt-4">
+        <div >
           <div>
             {/* <div>
               {store.map((hed) => (
@@ -43,7 +43,7 @@ function StoreScreen({ user, product}) {
               ))}
             </div> */}
             <div>
-              <div className=" grid grid-cols-2 p-2 gap-2 lg:grid-cols-4 p-2 gap-2 max-w-3xl  ml-auto mr-auto">
+              <div className=" mobile:grid grid-cols-2 p-2 gap-2 laptop:grid-cols-4 p-2 gap-2 ml-auto mr-auto">
                 {product.map((sto) => (
                   <CustomItemScreen
                     key={sto._id}

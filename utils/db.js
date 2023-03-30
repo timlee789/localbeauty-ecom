@@ -30,7 +30,7 @@ async function disconnect() {
 }
 function convertDocToObj(doc) {
   doc._id = doc._id.toString();
-  doc.product._id ? (doc.product._id = doc.product._id.toString()) : null;
+  //doc.product._id ? (doc.product._id = doc.product._id.toString()) : null;
   // doc.campaign._id ? (doc.campaign._id = doc.campaign._id.toString()) : null;
   doc.createdAt ? (doc.createdAt = doc.createdAt.toString()) : null;
   doc.updatedAt ? (doc.updatedAt = doc.updatedAt.toString()) : null;

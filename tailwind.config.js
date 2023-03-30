@@ -5,7 +5,24 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      height: {
+        '128': '28rem',
+      }
+    },
+    screens: {
+      'mobile': '360px',
+      // => @media (min-width: 270px) { ... }
+
+      'tablet': '640px',
+      // => @media (min-width: 640px) { ... }
+
+      'laptop': '1024px',
+      // => @media (min-width: 1024px) { ... }
+
+      'desktop': '1280px',
+      // => @media (min-width: 1280px) { ... }
+    },
   },
   plugins: [],
 }

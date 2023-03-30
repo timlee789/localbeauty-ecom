@@ -73,81 +73,88 @@ export default function Productpage() {
       ) : error ? (
         <div className="alert-error">{error}</div>
       ) : (
-        <div className="overflow-x-auto ">
-          <div className="flex justify-center flex-wrap grid gird-cols-2 lg:grid-cols-4 max-w-3xl  ml-auto mr-auto">
+        <div className="overflow-x-auto">
+          <div className="flex justify-center flex-wrap mobile:grid grid-cols-2 p-2 gap-2 laptop:grid-cols-4 p-2 gap-2 ml-auto mr-auto">
            
             {products.map((order) => (
               <div key={order._id}>
-                <div className="border-b card p-4 m-2">
+                <div>
                 <div className="flex justify-center card ">
          <Carousel showArrows={true} showThumbs={false} swipeable={true} autoPlay >
-        <div>
+        <div className='mobile:h-64 laptop:h-128'>
           <Image
             src={order.image}
             alt="banner"
             width={200}
             height={240}
-            className="element1"
+            className="mobile:element1 laptop:element2"
           />
           </div>
-        <div>
+        <div className='mobile:h-64 laptop:h-128'>
           <Image
             src={order.image}
             alt="banner"
             width={200}
             height={240}
-            className="element1 lg:element2"
+            className="mobile:element1 laptop:element2"
           />
           </div>
-        <div>
+        <div className='mobile:h-64 laptop:h-128'>
           <Image
             src={order.image}
             alt="banner"
             width={200}
             height={240}
-            className="element1  lg:element2"
+            className="mobile:element1 laptop:element2"
           />
           </div>
-        <div>
+        <div className='mobile:h-64 laptop:h-128'>
           <Image
             src={order.image}
             alt="banner"
             width={200}
             height={240}
-            className="element1  lg:element2"
+            className="mobile:element1 laptop:element2"
           />
           </div>
           
         </Carousel>
       </div>
-                <div className="text-xs text-red-800 line-through"> U$: {order.listprice}</div> &nbsp;&nbsp;&nbsp;
-                  <div className="font-bold text-sm">sale U$: {order.saleprice}</div>
-                 
-                  <div>{order.description}</div>
-                  <div className="font-bold text-xs text-blue-800 mb-4 mt-2">{order.description1}</div>
-                  <div className='text-xs'>{order.productname}</div>
-                  <div className='flex justify-center'>
-                  <div className=" p-2 ">
-                    <Link href={`/admin/userproducts/${order._id}`}>
-                      <div type="button" className="default-button">
-                        Edit
-                      </div>
-                    </Link>
-                    &nbsp;
-                  </div>
-                  <div className="p-2 ml-2">
-                    <a>
-                      <button
-                        onClick={() => deleteHandler(order._id)}
-                        className="default-button"
-                      >
-                        Delete
-                      </button>
-                    </a>
-                  </div>
-                  </div>
-                </div>
+            <div className="bg-slate-100 mb-6 text-center h-52">
+              <div className='flex justify-center  '>
+              <div className="text-xs text-red-800 line-through"> U$: {order.listprice}</div> &nbsp;&nbsp;&nbsp;
+              <div className="font-bold text-sm">sale U$: {order.saleprice}</div>
               </div>
+              <div>{order.description}</div>
+              <div className="mobile:font-bold text-xs text-blue-800 mb-4 mt-2">{order.description1}</div>
+              <div className='text-xs h-20'>{order.productname}</div> 
+              
+              <div className='laptop:flex justify-between'>
+                    <div className=" laptop:p-2 ">
+                          <Link href={`/admin/userproducts/${order._id}`}>
+                            <div type="button" className="primary-button">
+                              Edit
+                            </div>
+                          </Link>
+                      &nbsp;
+                    </div>
+                    <div className="laptop:p-2 ml-2">
+                            <a>
+                              <button
+                                onClick={() => deleteHandler(order._id)}
+                                className="red-button"
+                              >
+                                Delete
+                              </button>
+                            </a>
+                    </div>
+                </div>
+          
+            </div> 
+                
+            </div>
+        </div>
+              
             ))}
 
           </div>
