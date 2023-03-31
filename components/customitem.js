@@ -6,6 +6,8 @@ import { toast } from 'react-toastify';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import Link from 'next/link';
+import Map from '@/components/map';
+import {  useLoadScript} from '@react-google-maps/api';
 
 export default function CustomItemScreen(props) {
   const { state, dispatch } = useContext(Store);
@@ -18,6 +20,12 @@ export default function CustomItemScreen(props) {
     }
     dispatch({ type: 'CART_ADD_ITEM', payload: { ...props, quantity } });
   };
+
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
+});
+
+if(!isLoaded) return <div>Loading...</div>
   return (
     <div  > 
       <Link href={`/item/${props._id}`}>
@@ -38,18 +46,19 @@ export default function CustomItemScreen(props) {
       <div className="bg-slate-100 mb-6 text-center h-44">
         <div className='flex justify-center  '>
         <div className="text-xs text-red-800 line-through"> U$: {props.listprice}</div> &nbsp;&nbsp;&nbsp;
-        <div className="font-bold text-sm">sale U$: {props.saleprice}</div>
+        <div className="font-bold text-sm text-black-500">sale U$: {props.saleprice}</div>
         </div>
         <div>{props.description}</div>
         <div className="mobile:font-bold text-xs text-blue-800 mb-4 mt-2">{props.description1}</div>
-        <div className='text-xs h-20'>{props.productname}</div> 
+        <div className='text-xs h-20 text-black-800'>{props.productname}</div> 
         <button className="primary-button w-full font-bold text-sm" onClick={addToCartHandler}>
           Add to Cart
         </button>
     
       </div> 
-     
+     <Map/>
       </div>
+      
     </div>
   );
 }

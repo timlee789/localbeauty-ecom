@@ -9,6 +9,7 @@ import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import Link from 'next/link';
 import { toast } from 'react-toastify';
+import Map from '@/components/map';
 
 
 
@@ -108,6 +109,7 @@ function StoreScreen({ product}) {
             </button>
           </div>
         </div>
+        <Map />
       </div>
     </Layout>
   );

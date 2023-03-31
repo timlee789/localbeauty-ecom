@@ -9,6 +9,8 @@ import Cookies from 'js-cookie';
 import Store from '../../utils/Store';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import {  useLoadScript} from '@react-google-maps/api';
+import Map from '@/components/map';
 
 
 
@@ -24,8 +26,12 @@ function StoreScreen({ user, product}) {
   Cookies.set( 'Seller', user[0]._id)   
   Cookies.set( 'Sellername', user[0].name)   
   //Cookies.set( 'Seller', JSON.stringify(user[0]._id) )   
-      
- //console.log(user)
+
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
+});
+
+if(!isLoaded) return <div>Loading...</div>
   return (
     <Layout>
   
@@ -36,7 +42,7 @@ function StoreScreen({ user, product}) {
         ))}
 
         <div >
-          <div>
+          <div><Map/>
             {/* <div>
               {store.map((hed) => (
                 <Registration key={hed._id} id={hed._id} />

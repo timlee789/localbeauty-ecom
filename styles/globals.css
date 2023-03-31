@@ -109,7 +109,10 @@ textarea {
   animation: mymove 10s infinite;
   border-radius: 550px;
 }
-
+.map-container {
+  width: 500px;
+  height: 500px;
+}
 .imagethumb {
   display: flex;
   flex-wrap: true;

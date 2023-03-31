@@ -48,7 +48,7 @@ function Layout({ title, children }) {
       </Head>
       <ToastContainer position="bottom-center" limit={1} autoClose={2000} />
 
-      <div className="flex min-h-screen flex-col justify-between ">
+      <div className="flex min-h-screen flex-col justify-between bg-white">
         <header>
           <nav className="flex h-12 items-center px-4 justify-between shadow-md ">
 
@@ -156,6 +156,8 @@ function Layout({ title, children }) {
                      <div
                        className="dropdown-link"
                        href="#"
+                       text-black
+                       font-bold
                        onClick={logoutClickHandler}
                        >
                        Logout

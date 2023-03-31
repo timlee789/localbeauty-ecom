@@ -130,7 +130,7 @@ export default function Productpage() {
               <div className='text-xs h-20'>{order.productname}</div> 
               
               <div className='laptop:flex justify-between'>
-                    <div className=" laptop:p-2 ">
+                    <div className="laptop:p-2">
                           <Link href={`/admin/userproducts/${order._id}`}>
                             <div type="button" className="primary-button">
                               Edit

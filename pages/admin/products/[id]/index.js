@@ -131,7 +131,7 @@ export default function AdminProductEditScreen() {
   };
 
   return (
-    <div className="grid md:grid-cols-4 md:gap-5">
+    <div className="grid md:grid-cols-4 md:gap-5 bg-white">
       <div>
         <ul>
           <li>

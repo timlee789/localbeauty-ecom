@@ -39,8 +39,9 @@ function LoginScreen() {
     }
   };
   return (
-    <div>
-      <Layout title="Login">
+   
+      <Layout title="Login"> 
+      <div className='bg-white'>
         <form
           className="mx-auto max-w-screen-md"
           onSubmit={handleSubmit(submitHandler)}
@@ -92,9 +93,9 @@ function LoginScreen() {
             Dont have an account?
             <Link href="/register">Register</Link>
           </div>
-        </form>
+        </form> </div>
       </Layout>
-    </div>
+   
   );
 }
 
