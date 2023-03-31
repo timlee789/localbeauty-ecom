@@ -105,7 +105,7 @@ export default function AdminProductScreen() {
   };
   return (
     <Layout title="Order History">
-      <h1 className="mb-4 text-xl">Product Registration</h1>
+      <h1 className="mb-4 text-xl text-black">Product Registration</h1>
 
       <form
         className="mx-auto max-w-screen-md"
@@ -118,7 +118,7 @@ export default function AdminProductScreen() {
       </select> */}
 
         <div className="mb-4">
-          <label htmlFor="productname">productname</label>
+          <label htmlFor="productname text-black">productname</label>
           <input
             type="text"
             {...register('productname', {
@@ -133,7 +133,7 @@ export default function AdminProductScreen() {
           )}
         </div>
         <div className="mb-4">
-          <label htmlFor="listprice">List Price</label>
+          <label htmlFor="listprice text-black">List Price</label>
           <input
             type="listprice"
             {...register('listprice', { required: 'Please enter listprice' })}
@@ -141,11 +141,11 @@ export default function AdminProductScreen() {
             id="listprice"
           ></input>
           {errors.listprice && (
-            <div className="text-red-500">{errors.listprice.message}</div>
+            <div className="text-red-500 ">{errors.listprice.message}</div>
           )}
         </div>
         <div className="mb-4">
-          <label htmlFor="saleprice">Sale Price</label>
+          <label htmlFor="saleprice text-black">Sale Price</label>
           <input
             type="saleprice"
             {...register('saleprice', { required: 'Please enter saleprice' })}
@@ -157,7 +157,7 @@ export default function AdminProductScreen() {
           )}
         </div>
         <div className="mb-4">
-          <label htmlFor="stock">stock</label>
+          <label htmlFor="stock text-black">stock</label>
           <input
             type="stock"
             {...register('stock', { required: 'Please enter stock' })}
@@ -169,7 +169,7 @@ export default function AdminProductScreen() {
           )}
         </div>
         <div className="mb-4">
-          <label htmlFor="description1">description1</label>
+          <label htmlFor="description1 text-black">description1</label>
           <input
             type="text"
             {...register('description1', {
@@ -185,7 +185,7 @@ export default function AdminProductScreen() {
         </div>
 
         <div className="mb-4">
-          <label htmlFor="description2">description2</label>
+          <label htmlFor="description2 text-black">description2</label>
           <input
             type="text"
             {...register('description2', {
@@ -215,7 +215,7 @@ export default function AdminProductScreen() {
             <div className="text-red-500">{errors.imageField.message}</div>
           )}
         </div>
-        <div className="mb-4">
+        <div className="mb-4 text-black">
           <label htmlFor="imageFile">Upload image</label>
           <input
             type="file"

@@ -87,18 +87,18 @@ export default function ProductEdit() {
                       height={550}
                     />
                   </div>
-                  <div className="text-center text-blue-500 ">{order.productname}</div>
+                  <div className="text-center text-blue-500 font-bold">{order.productname}</div>
                   <div  className='flex justify-center'>
                   <div className="font-bold text-lg text-red-800 line-through"> ${order.listprice}</div>
                   <div className='ml-17'>  &nbsp; &nbsp; &nbsp;   sale Price&nbsp;&nbsp; </div>
-                  <div className=" font-bold text-center ">${order.saleprice}</div>
+                  <div className=" font-bold text-center text-black">${order.saleprice}</div>
                   </div>
                   <div className="text-center text-blue-500 ">{order.description1}</div>
                   <div className="text-center text-blue-500 ">{order.description2}</div>
                   <div className='flex justify-center'>
                   <div className=" p-2 ">
                     <Link href={`/admin/userproducts/${order._id}`}>
-                      <div type="button" className="default-button">
+                      <div type="button" className="primary-button">
                         Edit
                       </div>
                     </Link>
@@ -108,7 +108,7 @@ export default function ProductEdit() {
                     <a>
                       <button
                         onClick={() => deleteHandler(order._id)}
-                        className="default-button"
+                        className="red-button"
                       >
                         Delete
                       </button>

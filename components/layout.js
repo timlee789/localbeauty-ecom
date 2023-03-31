@@ -168,7 +168,7 @@ function Layout({ title, children }) {
               
               ) : session?.user?.storename ? (
                 <div> <div>Welcome </div>
-                    <button onClick={logoutClickHandler}> Logout</button>
+                    <button onClick={logoutClickHandler} className='text-black'> Logout</button>
                </div>
               ) : (
                 <Link href="/login">
