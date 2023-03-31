@@ -46,11 +46,11 @@ if(!isLoaded) return <div>Loading...</div>
       <div className="bg-slate-100 mb-6 text-center h-44">
         <div className='flex justify-center  '>
         <div className="text-xs text-red-800 line-through"> U$: {props.listprice}</div> &nbsp;&nbsp;&nbsp;
-        <div className="font-bold text-sm text-black-500">sale U$: {props.saleprice}</div>
+        <div className="font-bold text-sm text-black">sale U$: {props.saleprice}</div>
         </div>
         <div>{props.description}</div>
         <div className="mobile:font-bold text-xs text-blue-800 mb-4 mt-2">{props.description1}</div>
-        <div className='text-xs h-20 text-black-800'>{props.productname}</div> 
+        <div className='text-xs h-20 text-black'>{props.productname}</div> 
         <button className="primary-button w-full font-bold text-sm" onClick={addToCartHandler}>
           Add to Cart
         </button>

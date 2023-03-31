@@ -30,7 +30,7 @@ function StoreScreen({ product}) {
  console.log(product)
   return (
     <Layout>
-       <div className="py-2">
+       <div className="py-2 pl-5">
         <Link href={`/store/${product.user}`}>back to products</Link>
       </div>
       <div  className="mobile:grid grid-cols-1 p-2 gap-2 laptop:grid-cols-3 p-2 gap-2 ml-auto mr-auto">  
@@ -77,7 +77,7 @@ function StoreScreen({ product}) {
         </Carousel>
       </div>
         </div>
-        <div className='pl-4'>
+        <div className='pl-4 text-black'>
           <ul>
             <li>
               <h1 className="text-lg">{product.productname}</h1>
@@ -92,7 +92,7 @@ function StoreScreen({ product}) {
           </ul>
         </div>
         <div>
-          <div className="card p-5">
+          <div className="card p-5 text-black">
             <div className="mb-2 flex justify-between">
               <div>Price</div>
               <div>${product.saleprice}</div>
