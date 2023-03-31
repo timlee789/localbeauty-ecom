@@ -78,7 +78,7 @@ export default function ProductEdit() {
            
             {products.map((order) => (
               <div key={order._id} >
-                <div className="border-b card p-4 m-2">
+                <div className="border-b card p-4 mx-4">
                 <div className=" p-2 ">
                     <Image
                       src={order.image}
@@ -87,14 +87,15 @@ export default function ProductEdit() {
                       height={550}
                     />
                   </div>
+                  <div className='bg-grey-200'>
                   <div className="text-center text-blue-500 font-bold">{order.productname}</div>
                   <div  className='flex justify-center'>
                   <div className="font-bold text-lg text-red-800 line-through"> ${order.listprice}</div>
-                  <div className='ml-17'>  &nbsp; &nbsp; &nbsp;   sale Price&nbsp;&nbsp; </div>
+                  <div className='ml-17 text-black'>  &nbsp; &nbsp; &nbsp;   sale Price&nbsp;&nbsp; </div>
                   <div className=" font-bold text-center text-black">${order.saleprice}</div>
                   </div>
-                  <div className="text-center text-blue-500 ">{order.description1}</div>
-                  <div className="text-center text-blue-500 ">{order.description2}</div>
+                  <div className="text-centertext-black ">{order.description1}</div>
+                  <div className="text-center text-black ">{order.description2}</div>
                   <div className='flex justify-center'>
                   <div className=" p-2 ">
                     <Link href={`/admin/userproducts/${order._id}`}>
@@ -115,6 +116,7 @@ export default function ProductEdit() {
                     </a>
                   </div>
                   </div>
+                </div>
                 </div>
               </div>
             ))}

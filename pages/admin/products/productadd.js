@@ -117,7 +117,7 @@ export default function AdminProductScreen() {
           ))}
       </select> */}
 
-        <div className="mb-4">
+        <div className="mb-4 text-black px-4">
           <label htmlFor="productname text-black">productname</label>
           <input
             type="text"
@@ -132,7 +132,7 @@ export default function AdminProductScreen() {
             <div className="text-red-500">{errors.productname.message}</div>
           )}
         </div>
-        <div className="mb-4">
+        <div className="mb-4 text-black px-4">
           <label htmlFor="listprice text-black">List Price</label>
           <input
             type="listprice"
@@ -144,7 +144,7 @@ export default function AdminProductScreen() {
             <div className="text-red-500 ">{errors.listprice.message}</div>
           )}
         </div>
-        <div className="mb-4">
+        <div className="mb-4 text-black px-4">
           <label htmlFor="saleprice text-black">Sale Price</label>
           <input
             type="saleprice"
@@ -156,7 +156,7 @@ export default function AdminProductScreen() {
             <div className="text-red-500">{errors.saleprice.message}</div>
           )}
         </div>
-        <div className="mb-4">
+        <div className="mb-4 text-black px-4">
           <label htmlFor="stock text-black">stock</label>
           <input
             type="stock"
@@ -168,7 +168,7 @@ export default function AdminProductScreen() {
             <div className="text-red-500">{errors.stock.message}</div>
           )}
         </div>
-        <div className="mb-4">
+        <div className="mb-4 text-black px-4">
           <label htmlFor="description1 text-black">description1</label>
           <input
             type="text"
@@ -184,7 +184,7 @@ export default function AdminProductScreen() {
           )}
         </div>
 
-        <div className="mb-4">
+        <div className="mb-4 text-black px-4">
           <label htmlFor="description2 text-black">description2</label>
           <input
             type="text"
@@ -200,7 +200,7 @@ export default function AdminProductScreen() {
           )}
         </div>
 
-        <div className="mb-4">
+        <div className="mb-4 text-black px-4">
           <label htmlFor="image"></label>
           <input
             type="text"
@@ -215,7 +215,7 @@ export default function AdminProductScreen() {
             <div className="text-red-500">{errors.imageField.message}</div>
           )}
         </div>
-        <div className="mb-4 text-black">
+        <div className="mb-4 text-black px-4">
           <label htmlFor="imageFile">Upload image</label>
           <input
             type="file"
@@ -227,7 +227,7 @@ export default function AdminProductScreen() {
           {loading && <div>Uploading....</div>}
         </div>
 
-        <div className="mb-4">
+        <div className="mb-4 pl-10">
           <button className="primary-button">Register</button>
         </div>
       </form>

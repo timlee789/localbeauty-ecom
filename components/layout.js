@@ -154,10 +154,8 @@ function Layout({ title, children }) {
                    </Menu.Item> */}
                    <Menu.Item>
                      <div
-                       className="dropdown-link"
+                       className="dropdown-link text-blue-500 font-bold"
                        href="#"
-                       text-black
-                       font-bold
                        onClick={logoutClickHandler}
                        >
                        Logout
