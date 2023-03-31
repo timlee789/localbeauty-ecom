@@ -66,20 +66,20 @@ export default function ShippingScreen() {
     <Layout title="Signin As Guest">
         <CheckoutWizard activeStep={1}/>
         <form className='max=auto max-w-screen-md' onSubmit={handleSubmit(submitHandler)}>
-            <h1 className='mb-4 text-xl'>Signin As Guest</h1>
-                <div className='mb-4'>
+            <h1 className='mb-4 text-xl text-black'>Signin As Guest</h1>
+                <div className='mb-4 text-black'>
                         <label htmlFor='name'>Name</label>
                         <input className='w-full' id='name' autoFocus {...register('name', {required: 'Please enter full name'})} />
                         {errors.name && (<div className='text-red-500'>{errors.name.message}</div>)}
                 </div>
-                <div className='mb-4'>
+                <div className='mb-4 text-black'>
                         <label htmlFor="email">Email</label>
                         <input className='w-full' id='email' 
                         {...register('email', {required: 'Please enter email', 
                         minLength: {value: 3, message: 'email is more than 2 chars'}})} />
                         {errors.email && ( <div className='text-red-500'>{errors.email.message}</div>)}
                 </div>
-                <div className='mb-4'>
+                <div className='mb-4 text-black'>
                         <label htmlFor="tel">Tel</label>
                         <input className='w-full' id='tel' 
                         {...register('tel', {required: 'Please enter tel'} )} />
