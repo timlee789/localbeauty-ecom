@@ -20,7 +20,7 @@ export default function Home({storeinfo}) {
           <Productpage />
         </div>
         //</div>
-      ) : (
+      ) :  (
         <div className="flex justify-center card ">
         <HomePage />
         <div className="grid grid-cols-2 gap-4 mt-10 md:grid-cols-3 lg:grid-cols-5 ml-7 ">
@@ -39,7 +39,8 @@ export default function Home({storeinfo}) {
         ))}
       </div>
        </div>
-      )}
+      ) }
+     
      
     </Layout>
   );
