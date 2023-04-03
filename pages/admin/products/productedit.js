@@ -22,7 +22,7 @@ function reducer(state, action) {
   }
 }
 
-export default function productedit() {
+export default function Productedit() {
 
   const session = getSession();
   const { user } = session;
