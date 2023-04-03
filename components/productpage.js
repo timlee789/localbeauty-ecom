@@ -65,9 +65,7 @@ export default function Productpage() {
   
   return (
     <div>
-    
-
-      <h1 className="mb-4 text-xl">Product List</h1>
+      <h1 className="mb-4 text-lg">Product List</h1>
       {loading ? (
         <div>Loading...</div>
       ) : error ? (
@@ -129,10 +127,10 @@ export default function Productpage() {
               <div className="mobile:font-bold text-xs text-blue-800 mb-4 mt-2">{order.description1}</div>
               <div className='text-xs h-20'>{order.productname}</div> 
               
-              <div className='laptop:flex justify-between'>
+              <div className= 'mobile:flex flex-col-2 justify-center mx-2 laptop:flex justify-between'>
                     <div className="laptop:p-2">
                           <Link href={`/admin/userproducts/${order._id}`}>
-                            <div type="button" className="primary-button">
+                            <div type="button" className="edit-button">
                               Edit
                             </div>
                           </Link>

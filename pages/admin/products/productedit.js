@@ -5,6 +5,8 @@ import { getSession } from 'next-auth/react';
 import { toast } from 'react-toastify';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import Layout from '@/components/layout';
 
 function reducer(state, action) {
@@ -20,7 +22,7 @@ function reducer(state, action) {
   }
 }
 
-export default function ProductEdit() {
+export default function productedit() {
 
   const session = getSession();
   const { user } = session;
@@ -56,7 +58,7 @@ export default function ProductEdit() {
       await axios.delete(`/api/admin/products/${productId}`);
 
       toast.success('Product deleted successfully');
-      router.push('/admin/products/productedit');
+      router.push('/productlist');
     } catch (err) {
       toast.error(getError(err));
     }
@@ -67,58 +69,94 @@ export default function ProductEdit() {
     <div>
     
 
-      <h1 className="mb-4 text-xl">Product List</h1>
+      <h1 className="mb-4 text-lg">Product List</h1>
       {loading ? (
         <div>Loading...</div>
       ) : error ? (
         <div className="alert-error">{error}</div>
       ) : (
         <div className="overflow-x-auto">
-          <div className="flex justify-center flex-wrap">
+          <div className="flex justify-center flex-wrap mobile:grid grid-cols-2 p-2 gap-2 laptop:grid-cols-4 p-2 gap-2 ml-auto mr-auto">
            
             {products.map((order) => (
-              <div key={order._id} >
-                <div className="border-b card p-4 mx-4">
-                <div className=" p-2 ">
-                    <Image
-                      src={order.image}
-                      alt={order.productname}
-                      width={350}
-                      height={550}
-                    />
-                  </div>
-                  <div className='bg-grey-200'>
-                  <div className="text-center text-blue-500 font-bold">{order.productname}</div>
-                  <div  className='flex justify-center'>
-                  <div className="font-bold text-lg text-red-800 line-through"> ${order.listprice}</div>
-                  <div className='ml-17 text-black'>  &nbsp; &nbsp; &nbsp;   sale Price&nbsp;&nbsp; </div>
-                  <div className=" font-bold text-center text-black">${order.saleprice}</div>
-                  </div>
-                  <div className="text-centertext-black ">{order.description1}</div>
-                  <div className="text-center text-black ">{order.description2}</div>
-                  <div className='flex justify-center'>
-                  <div className=" p-2 ">
-                    <Link href={`/admin/userproducts/${order._id}`}>
-                      <div type="button" className="primary-button">
-                        Edit
-                      </div>
-                    </Link>
-                    &nbsp;
-                  </div>
-                  <div className="p-2 ml-40">
-                    <a>
-                      <button
-                        onClick={() => deleteHandler(order._id)}
-                        className="red-button"
-                      >
-                        Delete
-                      </button>
-                    </a>
-                  </div>
-                  </div>
-                </div>
-                </div>
+              <div key={order._id}>
+                <div>
+                <div className="flex justify-center card ">
+         <Carousel showArrows={true} showThumbs={false} swipeable={true} autoPlay >
+        <div className='mobile:h-64 laptop:h-128'>
+          <Image
+            src={order.image}
+            alt="banner"
+            width={200}
+            height={240}
+            className="mobile:element1 laptop:element2"
+          />
+          </div>
+        <div className='mobile:h-64 laptop:h-128'>
+          <Image
+            src={order.image}
+            alt="banner"
+            width={200}
+            height={240}
+            className="mobile:element1 laptop:element2"
+          />
+          </div>
+        <div className='mobile:h-64 laptop:h-128'>
+          <Image
+            src={order.image}
+            alt="banner"
+            width={200}
+            height={240}
+            className="mobile:element1 laptop:element2"
+          />
+          </div>
+        <div className='mobile:h-64 laptop:h-128'>
+          <Image
+            src={order.image}
+            alt="banner"
+            width={200}
+            height={240}
+            className="mobile:element1 laptop:element2"
+          />
+          </div>
+          
+        </Carousel>
+      </div>
+            <div className="bg-slate-100 mb-6 text-center h-52">
+              <div className='flex justify-center  '>
+              <div className="text-xs text-red-800 line-through"> U$: {order.listprice}</div> &nbsp;&nbsp;&nbsp;
+              <div className="font-bold text-sm">sale U$: {order.saleprice}</div>
               </div>
+              <div>{order.description}</div>
+              <div className="mobile:font-bold text-xs text-blue-800 mb-4 mt-2">{order.description1}</div>
+              <div className='text-xs h-20'>{order.productname}</div> 
+              
+              <div className= 'mobile:flex flex-col-2 justify-center mx-2 laptop:flex justify-between'>
+                    <div className="laptop:p-2">
+                          <Link href={`/admin/userproducts/${order._id}`}>
+                            <div type="button" className="edit-button">
+                              Edit
+                            </div>
+                          </Link>
+                      &nbsp;
+                    </div>
+                    <div className="laptop:p-2 ml-2">
+                            <a>
+                              <button
+                                onClick={() => deleteHandler(order._id)}
+                                className="red-button"
+                              >
+                                Delete
+                              </button>
+                            </a>
+                    </div>
+                </div>
+          
+            </div> 
+                
+            </div>
+        </div>
+              
             ))}
 
           </div>

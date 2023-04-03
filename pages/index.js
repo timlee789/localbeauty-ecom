@@ -15,11 +15,11 @@ export default function Home({storeinfo}) {
     <Layout title="Home Page">
 
       {session?.user?.email? (
-        <div>{session.user._id}
+        // <div>{session.user._id}
         <div>
           <Productpage />
         </div>
-        </div>
+        //</div>
       ) : (
         <div className="flex justify-center card ">
         <HomePage />

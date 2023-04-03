@@ -7,7 +7,6 @@ import DropdownLink from './dropdownlink';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSession, signOut } from 'next-auth/react';
-
 import  Cookie  from 'js-cookie';
 
 
@@ -17,6 +16,7 @@ function Layout({ title, children }) {
   const { cart } = state;
   const [cartItemsCount, setCartItemsCount] = useState(0);
   const sellername = Cookie.get('Sellername');
+  const seller = Cookie.get('Seller');
   const [hydrated, setHydrated] = React.useState(false);
 
   useEffect(() => {
@@ -58,7 +58,7 @@ function Layout({ title, children }) {
               </Link>
             ) : (
              
-              <Link href="/">
+              <Link href={`/store/${seller}`}>
               <div className="text-xs font-bold">{sellername}</div>
               </Link>
             ) 
@@ -82,12 +82,10 @@ function Layout({ title, children }) {
               </Link>
               </div>
             )}
-              
-              
-           
+       
               {session?.user?.isAdmin? (
-                 <Menu as="div" className="relative inline-block z-10">
-                 <Menu.Button className="text-blue-600 font-bold text-lg">       
+                 <Menu as="div" className="relative inline-block z-10 ml-12">
+                 <Menu.Button className="text-black font-bold text-md">       
                   {/* { session.user.name } */}
                   Menu
                  </Menu.Button>

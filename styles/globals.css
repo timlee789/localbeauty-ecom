@@ -27,8 +27,12 @@ a {
   @apply rounded bg-amber-300 py-2 px-4 shadow outline-none hover:bg-amber-400 active:bg-amber-500
 }
 .red-button {
-  @apply rounded bg-red-600 py-2 px-4 shadow outline-none hover:bg-red-400 active:bg-red-500 text-white
+  @apply rounded bg-red-600 py-2 px-2 shadow outline-none hover:bg-red-400 active:bg-red-400 text-white
 }
+.edit-button {
+  @apply rounded bg-blue-600 py-2 px-6 shadow outline-none hover:bg-red-400 active:bg-blue-400 text-white
+}
+
 .default-button {
   @apply rounded bg-gray-100 py-2 px-4 text-black shadow outline-none hover:bg-gray-200 active:bg-gray-300
 }
