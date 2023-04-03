@@ -9,7 +9,7 @@ import Cookies from 'js-cookie';
 import Store from '../../utils/Store';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import {  useLoadScript} from '@react-google-maps/api';
+import {  useLoadScript } from '@react-google-maps/api';
 import Map from '@/components/map';
 
 
@@ -34,15 +34,14 @@ function StoreScreen({ user, product}) {
 if(!isLoaded) return <div>Loading...</div>
   return (
     <Layout>
-  
-  
       <div className='mobile:bg-white laptop:bg-white'>
         {user.map((heads) => (
           <HeadBanner key={heads._id} banner={heads.banner} />
         ))}
 
         <div >
-          <div><Map/>
+      
+          <div>
             {/* <div>
               {store.map((hed) => (
                 <Registration key={hed._id} id={hed._id} />

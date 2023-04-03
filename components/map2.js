@@ -79,9 +79,9 @@ function Location() {
         <form onSubmit={handleSubmit}>
             <input type="text" name="address" onChange={inputChange} />
             <input type="text" name="city" onChange={inputChange} />
-            <select id="state" onChange={changeOption} >
+            {/* <select id="state" onChange={changeOption} >
             {state}
-            </select>
+            </select> */}
             <input type="submit" value="Check Location" />
         </form>
         </div>

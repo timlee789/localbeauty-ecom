@@ -80,19 +80,21 @@ function StoreScreen({ product}) {
         <div className='pl-4 text-black'>
           <ul>
             <li>
-              <h1 className="text-lg">{product.productname}</h1>
+              <h1 className="text-sm font-bold text-blue-500 mb-4">{product.productname}</h1>
             </li>
-            <li>List Price: {product.listprice}</li>
-            <li>Sale Price: {product.saleprice}</li>
-            <li>Seller: {product.user}</li>
+            <div className='text-sm'>
+            <li>List Price: ${product.listprice}</li>
+            <li>Sale Price: ${product.saleprice}</li>
+            {/* <li>Seller: {product.user}</li> */}
             <li>
-              {product.countInStock}
+              Inventory: {product.countInStock}
             </li>
             <li>Description: {product.description1}</li>
+            </div>
           </ul>
         </div>
         <div>
-          <div className="card p-5 text-black">
+          <div className="card p-5 text-black text-sm font-bold">
             <div className="mb-2 flex justify-between">
               <div>Price</div>
               <div>${product.saleprice}</div>
@@ -109,6 +111,7 @@ function StoreScreen({ product}) {
             </button>
           </div>
         </div>
+        <div>Store Location</div>
         <Map />
       </div>
     </Layout>

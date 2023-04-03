@@ -23,10 +23,7 @@ export default function Home({storeinfo}) {
       ) : (
         <div className="flex justify-center card ">
         <HomePage />
-       </div>
-      )}
-     
-      {/* <div className="grid grid-cols-1 gap-4 mt-10 md:grid-cols-3 lg:grid-cols-5 ml-7 ">
+        <div className="grid grid-cols-2 gap-4 mt-10 md:grid-cols-3 lg:grid-cols-5 ml-7 ">
         {storeinfo.map((sto) => (
           <StoreInfo
             key={sto._id}
@@ -40,7 +37,10 @@ export default function Home({storeinfo}) {
             tel={sto.tel}
           />
         ))}
-      </div> */}
+      </div>
+       </div>
+      )}
+     
     </Layout>
   );
 }
@@ -56,6 +56,7 @@ export async function getServerSideProps() {
         state: sto.state || null,
         address: sto.address || null,
         tel: sto.tel || null,
+        banner: sto.banner || null
       })),
     },
   };

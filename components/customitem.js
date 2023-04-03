@@ -53,10 +53,8 @@ if(!isLoaded) return <div>Loading...</div>
         <div className='text-xs h-20 text-black'>{props.productname}</div> 
         <button className="primary-button w-full font-bold text-sm" onClick={addToCartHandler}>
           Add to Cart
-        </button>
-    
+        </button>   
       </div> 
-     <Map/>
       </div>
       
     </div>

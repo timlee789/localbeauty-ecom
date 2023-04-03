@@ -54,19 +54,20 @@ function Layout({ title, children }) {
 
              {session?.user?.isAdmin? ( 
               <Link href="/">
-              <div className="text-lg font-bold">{session.user.name}</div>
+              <div className="text-sm font-bold">{session.user.name}</div>
               </Link>
             ) : (
              
               <Link href="/">
-              <div className="text-lg font-bold">{sellername}</div>
+              <div className="text-xs font-bold">{sellername}</div>
               </Link>
-            ) } 
+            ) 
+           } 
            
            
            <div className='flex justify-between'>
             {sellername? (
-              <Link href="/cart" className="px-8 flex font-bold">
+              <Link href="/cart" className="flex font-bold ">
                 Cart
                 {cartItemsCount > 0 && (
                   <span className="ml-1 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white">
@@ -75,7 +76,11 @@ function Layout({ title, children }) {
                 )}
               </Link>
             ) : (
-               <div> </div>
+              <div className=''>
+              <Link href="/">
+          <div className='text-sm font-bold'>Localflyer.online</div>
+              </Link>
+              </div>
             )}
               
               
@@ -169,9 +174,11 @@ function Layout({ title, children }) {
                     <button onClick={logoutClickHandler} className='text-black'> Logout</button>
                </div>
               ) : (
+                
                 <Link href="/login">
-                  <div className="font-bold text-blue-400">Login</div>
+                  <div className="font-bold text-blue-400 ml-8">Login</div>
                 </Link>
+                         
               )}
             </div>
           </nav>
